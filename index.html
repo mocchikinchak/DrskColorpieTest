@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRSKカラーパイ診断</title>
+  <style>
+    :root {
+      --bg: #eaf8ff;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --accent: #111827;
+      --x-bg: #000000;
+      --x-text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #app {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    #title {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .site-credit {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    #progress {
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    #question-area,
+    #result-area {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    #question-area h2,
+    #result-area h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1.35rem;
+      line-height: 1.4;
+    }
+
+    .options-wrap {
+      display: grid;
+      gap: 12px;
+    }
+
+    .choice-button,
+    .restart-button,
+    .share-button {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text);
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: transform 0.08s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .choice-button:hover,
+    .restart-button:hover,
+    .share-button:hover {
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .choice-button:active,
+    .restart-button:active,
+    .share-button:active {
+      transform: translateY(0);
+    }
+
+    .share-button {
+      background: var(--x-bg);
+      color: var(--x-text);
+      border-color: #000000;
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .restart-button {
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .name-input {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    #result-area p {
+      margin: 0 0 10px;
+    }
+
+    #result-area h3 {
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    #result-area h4 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    #result-area ol,
+    #result-area ul {
+      padding-left: 22px;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+
+    .notes {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <h1 id="title">DRSKカラーパイ診断</h1>
+    <p class="site-credit">
+      created by
+      <a href="https://x.com/drsk_color_cup" target="_blank" rel="noopener noreferrer">@drsk_color_cup</a>
+      /
+      <a href="https://x.com/mocchikinchak" target="_blank" rel="noopener noreferrer">@mocchikinchak</a>
+    </p>
+    <div id="progress">読み込み中…</div>
+
+    <section id="question-area" aria-live="polite">
+      <p>診断を準備している。</p>
+    </section>
+
+    <section id="result-area" aria-live="polite" hidden></section>
+
+    <p class="notes">
+      DRSKカラーパイ診断はファンコンテンツ・ポリシーに沿った非公式のファンコンテンツです。ウィザーズ社の認可/許諾は得ていません。題材の一部に、ウィザーズ・オブ・ザ・コースト社の財産を含んでいます。©Wizards of the Coast LLC.
+    </p>
+  </main>
+
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>
