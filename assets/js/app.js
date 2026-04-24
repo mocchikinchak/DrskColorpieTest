@@ -124,7 +124,7 @@ function buildShareText() {
 function openXShare() {
   const text = buildShareText();
   const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
+  window.location.href = url;
 }
 
 function renderTitle() {
@@ -192,11 +192,12 @@ function renderStartScreen() {
   questionArea.appendChild(input);
 
   const button = createButton("診断を始める", () => {
-    state.userName = input.value.trim();
-    startDiagnosis();
-  });
-  button.className = "choice-button";
-  questionArea.appendChild(button);
+  state.userName = input.value.trim();
+  startDiagnosis();
+});
+
+button.className = "choice-button start-button";
+questionArea.appendChild(button);
 }
 
 function renderQuestion() {

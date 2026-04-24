@@ -27,6 +27,34 @@
       --x-text: #ffffff;
     }
 
+    #title {
+      text-align: center;
+    }
+
+    .site-credit {
+      text-align: center;
+    }
+
+    .name-input {
+      display: block;
+      margin: 0 auto 16px;
+      max-width: 420px;
+    }
+
+    .choice-button.start-button {
+      width: auto;
+      min-width: 240px;
+      display: block;
+      margin: 16px auto 0;
+      text-align: center;
+    }
+
+    .start-button {
+      display: block;
+      margin: 16px auto;
+      text-align: center;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -124,6 +152,15 @@
       transform: translateY(0);
     }
 
+    .choice-button.start-button {
+      width: auto;
+      min-width: 240px;
+      display: block;
+      margin: 16px auto 0;
+      text-align: center;
+      font-weight: 700;
+    }
+
     .share-button {
       background: var(--x-bg);
       color: var(--x-text);
@@ -189,7 +226,7 @@
     <div id="progress">読み込み中…</div>
 
     <section id="question-area" aria-live="polite">
-      <p>診断を準備している。</p>
+      <p>診断準備中…</p>
     </section>
 
     <section id="result-area" aria-live="polite" hidden></section>
