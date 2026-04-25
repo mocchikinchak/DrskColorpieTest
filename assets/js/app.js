@@ -16,6 +16,8 @@ import selectQuestions from "./core/questionSelector.js";
 import buildScoreSummary from "./core/scoring.js";
 import diagnoseFromSummary from "./core/diagnosis.js";
 
+const DEBUG = false;
+
 const state = {
   userName: "",
   selectedQuestions: [],
@@ -310,7 +312,7 @@ function renderResultContent(resultArea, resultKey, scoreSummary = null, diagnos
   shareButton.className = "share-button";
   resultArea.appendChild(shareButton);
 
-  if (scoreSummary && diagnosis) {
+  if (DEBUG && scoreSummary && diagnosis) {
     const debugTitle = document.createElement("h3");
     debugTitle.textContent = "開発用データ";
     resultArea.appendChild(debugTitle);
@@ -380,9 +382,11 @@ function renderResult() {
     false,
   );
 
-  console.log("scoreSummary", state.scoreSummary);
-  console.log("diagnosis", state.diagnosis);
-  console.log("resultData", results[state.diagnosis.resultKey]);
+  if (DEBUG) {
+    console.log("scoreSummary", state.scoreSummary);
+    console.log("diagnosis", state.diagnosis);
+    console.log("resultData", results[state.diagnosis.resultKey]);
+  }
 }
 
 function finishDiagnosis() {
