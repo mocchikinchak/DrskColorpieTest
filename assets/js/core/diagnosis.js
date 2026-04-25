@@ -283,7 +283,18 @@ export function diagnoseFromRankedColors(rankedColors) {
     );
   }
 
-  // 4. 単色未満だが1位がそこそこ強いケース
+  // 4. 1位がそこそこ強いが、2位と3位が同点のケース
+  // 例: 16 / 10 / 10 / 9 のような形。
+  // d12 >= 6 でも、2位と3位が同点なら3色へ倒す。
+  if (gaps.d12 >= DUAL_CLOSE_GAP + 1 && gaps.d23 === 0) {
+    return buildTriResult(
+      topThreeColors,
+      gaps,
+      `d12 は ${DUAL_CLOSE_GAP + 1} 以上だが、2位と3位が同点のため3色判定。`,
+    );
+  }
+
+  // 5. 単色未満だが1位がそこそこ強いケース
   // d12 が 6〜7 程度なら、単色にはせず上位2色にする。
   // これで「少し強いだけの単色」を抑える。
   if (gaps.d12 >= DUAL_CLOSE_GAP + 1) {
@@ -294,7 +305,7 @@ export function diagnoseFromRankedColors(rankedColors) {
     );
   }
 
-  // 5. 2位と3位が近い中間ケース
+  // 6. 2位と3位が近い中間ケース
   // 1位・2位・3位が完全に密着していなくても、3位が十分近ければ3色へ倒す。
   // 例: 20 / 15 / 12 / 9 のような形。
   if (gaps.d23 <= TRI_CLOSE_GAP) {
@@ -305,7 +316,7 @@ export function diagnoseFromRankedColors(rankedColors) {
     );
   }
 
-  // 6. それ以外は2色
+  // 7. それ以外は2色
   // 単色閾値に届かず、3色としても近くないなら、上位2色を結果にする。
   return buildDualResult(
     topTwoColors,
