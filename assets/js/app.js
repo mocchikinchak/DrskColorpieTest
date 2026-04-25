@@ -256,12 +256,14 @@ function renderResultContent(resultArea, resultKey, scoreSummary = null, diagnos
   resultArea.appendChild(title);
 
   const lead = document.createElement("h3");
-  lead.textContent = `${displayName}さんのカラーパイは「${displayResultName}」でした！`;
-  resultArea.appendChild(lead);
+    lead.classList.add("result-lead");
+    lead.innerHTML = `${displayName}さんのカラーパイは<br>「${displayResultName}」でした！<br><br>`;
+    resultArea.appendChild(lead);
 
   if (resultData) {
     if (resultData.catchcopy) {
       const catchcopyEl = document.createElement("p");
+      catchcopyEl.classList.add("result-catchcopy");
       catchcopyEl.textContent = resultData.catchcopy;
       resultArea.appendChild(catchcopyEl);
     }
