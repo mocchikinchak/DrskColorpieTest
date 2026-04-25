@@ -39,6 +39,13 @@ export const TRI_CLOSE_GAP = 3;
 export const DUAL_CLOSE_GAP = 5;
 export const DUAL_SEPARATION_GAP = 4;
 
+// 対抗2色・楔3色補正用。
+// scores自体は変更せず、僅差候補の組み合わせ評価にだけ使う。
+export const CANDIDATE_TOTAL_GAP = 3;
+export const STRUCTURE_BONUS_MARGIN = 1;
+export const STRONG_WEIGHT = 2;
+export const HIT_WEIGHT = 1;
+
 /**
  * 色配列が友好2色かどうかを判定
  * 例: white + blue は true, white + black は false
@@ -216,6 +223,202 @@ export function buildTriResult(colors, gaps, reason) {
   });
 }
 
+
+/**
+ * 指定色の集計情報を取り出す
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @param {string} color
+ * @returns {{color:string,total:number,strongCount:number,hitCount:number}}
+ */
+export function getColorScore(rankedColors, color) {
+  return rankedColors.find((item) => item.color === color) ?? {
+    color,
+    total: 0,
+    strongCount: 0,
+    hitCount: 0,
+  };
+}
+
+/**
+ * 候補色群の評価値を作る。
+ * scores自体は変更しない。
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @param {string[]} colors
+ * @returns {{totalSum:number,strongSum:number,hitSum:number,value:number}}
+ */
+export function evaluateColorSet(rankedColors, colors) {
+  const items = colors.map((color) => getColorScore(rankedColors, color));
+  const totalSum = items.reduce((sum, item) => sum + item.total, 0);
+  const strongSum = items.reduce((sum, item) => sum + item.strongCount, 0);
+  const hitSum = items.reduce((sum, item) => sum + item.hitCount, 0);
+
+  return {
+    totalSum,
+    strongSum,
+    hitSum,
+    value: totalSum + strongSum * STRONG_WEIGHT + hitSum * HIT_WEIGHT,
+  };
+}
+
+/**
+ * 1位との差が一定以内の色だけを候補にする
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @returns {string[]}
+ */
+export function getCloseCandidateColors(rankedColors) {
+  const topTotal = rankedColors[0]?.total ?? 0;
+  return rankedColors
+    .filter((item) => topTotal - item.total <= CANDIDATE_TOTAL_GAP)
+    .map((item) => item.color);
+}
+
+/**
+ * 配列からn個の組み合わせを作る
+ *
+ * @param {string[]} values
+ * @param {number} size
+ * @returns {string[][]}
+ */
+export function combinations(values, size) {
+  if (size <= 0) return [[]];
+  if (values.length < size) return [];
+
+  const result = [];
+
+  function walk(start, picked) {
+    if (picked.length === size) {
+      result.push([...picked]);
+      return;
+    }
+
+    for (let i = start; i < values.length; i += 1) {
+      picked.push(values[i]);
+      walk(i + 1, picked);
+      picked.pop();
+    }
+  }
+
+  walk(0, []);
+  return result;
+}
+
+/**
+ * 対抗2色を僅差候補から拾う。
+ * 通常候補を strong/hit 評価で少し上回る場合のみ採用する。
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @param {string[]} baseDualColors
+ * @returns {{colors:string[],evaluation:ReturnType<typeof evaluateColorSet>,baseEvaluation:ReturnType<typeof evaluateColorSet>} | null}
+ */
+export function findEnemyDualCorrection(rankedColors, baseDualColors) {
+  const candidateColors = getCloseCandidateColors(rankedColors);
+  const baseEvaluation = evaluateColorSet(rankedColors, baseDualColors);
+
+  const candidates = combinations(candidateColors, 2)
+    .filter((colors) => isEnemyDual(colors))
+    .map((colors) => ({
+      colors,
+      evaluation: evaluateColorSet(rankedColors, colors),
+    }))
+    .sort((a, b) => b.evaluation.value - a.evaluation.value);
+
+  const best = candidates[0];
+  if (!best) return null;
+
+  if (best.evaluation.value >= baseEvaluation.value + STRUCTURE_BONUS_MARGIN) {
+    return {
+      colors: best.colors,
+      evaluation: best.evaluation,
+      baseEvaluation,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * 楔3色を僅差候補から拾う。
+ * 通常候補を strong/hit 評価で少し上回る場合のみ採用する。
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @param {string[]} baseTriColors
+ * @returns {{colors:string[],evaluation:ReturnType<typeof evaluateColorSet>,baseEvaluation:ReturnType<typeof evaluateColorSet>} | null}
+ */
+export function findWedgeTriCorrection(rankedColors, baseTriColors) {
+  const candidateColors = getCloseCandidateColors(rankedColors);
+  const baseEvaluation = evaluateColorSet(rankedColors, baseTriColors);
+
+  const candidates = combinations(candidateColors, 3)
+    .filter((colors) => getTriadKind(colors) === "wedge")
+    .map((colors) => ({
+      colors,
+      evaluation: evaluateColorSet(rankedColors, colors),
+    }))
+    .sort((a, b) => b.evaluation.value - a.evaluation.value);
+
+  const best = candidates[0];
+  if (!best) return null;
+
+  if (best.evaluation.value >= baseEvaluation.value + STRUCTURE_BONUS_MARGIN) {
+    return {
+      colors: best.colors,
+      evaluation: best.evaluation,
+      baseEvaluation,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * 2色結果を作る前に、対抗2色補正を試す
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @param {string[]} baseDualColors
+ * @param {ReturnType<typeof computeScoreGaps>} gaps
+ * @param {string} baseReason
+ * @returns {ReturnType<typeof buildDiagnosisResult>}
+ */
+export function buildCorrectedDualResult(rankedColors, baseDualColors, gaps, baseReason) {
+  const correction = findEnemyDualCorrection(rankedColors, baseDualColors);
+
+  if (correction) {
+    return buildDualResult(
+      correction.colors,
+      gaps,
+      `${baseReason} ただし、total差${CANDIDATE_TOTAL_GAP}以内の候補内で対抗2色のstrong/hit評価が高いため、対抗2色補正を優先。`,
+    );
+  }
+
+  return buildDualResult(baseDualColors, gaps, baseReason);
+}
+
+/**
+ * 3色結果を作る前に、楔3色補正を試す
+ *
+ * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
+ * @param {string[]} baseTriColors
+ * @param {ReturnType<typeof computeScoreGaps>} gaps
+ * @param {string} baseReason
+ * @returns {ReturnType<typeof buildDiagnosisResult>}
+ */
+export function buildCorrectedTriResult(rankedColors, baseTriColors, gaps, baseReason) {
+  const correction = findWedgeTriCorrection(rankedColors, baseTriColors);
+
+  if (correction) {
+    return buildTriResult(
+      correction.colors,
+      gaps,
+      `${baseReason} ただし、total差${CANDIDATE_TOTAL_GAP}以内の候補内で楔3色のstrong/hit評価が高いため、楔3色補正を優先。`,
+    );
+  }
+
+  return buildTriResult(baseTriColors, gaps, baseReason);
+}
+
 /**
  * 単色・2色・3色を判定する
  *
@@ -265,7 +468,8 @@ export function diagnoseFromRankedColors(rankedColors) {
   // 上位3色が近い場合は、2色より3色を優先する。
   // 例: 20 / 18 / 16 / 10 のような形。
   if (gaps.d12 <= TRI_CLOSE_GAP && gaps.d23 <= TRI_CLOSE_GAP) {
-    return buildTriResult(
+    return buildCorrectedTriResult(
+      rankedColors,
       topThreeColors,
       gaps,
       `d12 <= ${TRI_CLOSE_GAP} かつ d23 <= ${TRI_CLOSE_GAP} により、上位3色が近いため3色判定。`,
@@ -276,7 +480,8 @@ export function diagnoseFromRankedColors(rankedColors) {
   // 1位と2位がある程度近く、2位と3位が離れていれば2色。
   // 例: 20 / 16 / 10 / 9 のような形。
   if (gaps.d12 <= DUAL_CLOSE_GAP && gaps.d23 >= DUAL_SEPARATION_GAP) {
-    return buildDualResult(
+    return buildCorrectedDualResult(
+      rankedColors,
       topTwoColors,
       gaps,
       `d12 <= ${DUAL_CLOSE_GAP} かつ d23 >= ${DUAL_SEPARATION_GAP} により、上位2色がまとまり3位以下と分断しているため2色判定。`,
@@ -287,7 +492,8 @@ export function diagnoseFromRankedColors(rankedColors) {
   // 例: 16 / 10 / 10 / 9 のような形。
   // d12 >= 6 でも、2位と3位が同点なら3色へ倒す。
   if (gaps.d12 >= DUAL_CLOSE_GAP + 1 && gaps.d23 === 0) {
-    return buildTriResult(
+    return buildCorrectedTriResult(
+      rankedColors,
       topThreeColors,
       gaps,
       `d12 は ${DUAL_CLOSE_GAP + 1} 以上だが、2位と3位が同点のため3色判定。`,
@@ -298,7 +504,8 @@ export function diagnoseFromRankedColors(rankedColors) {
   // d12 が 6〜7 程度なら、単色にはせず上位2色にする。
   // これで「少し強いだけの単色」を抑える。
   if (gaps.d12 >= DUAL_CLOSE_GAP + 1) {
-    return buildDualResult(
+    return buildCorrectedDualResult(
+      rankedColors,
       topTwoColors,
       gaps,
       `d12 は ${MONO_THRESHOLD} 未満だが ${DUAL_CLOSE_GAP + 1} 以上。単色にはせず、1位と2位の2色判定。`,
@@ -309,7 +516,8 @@ export function diagnoseFromRankedColors(rankedColors) {
   // 1位・2位・3位が完全に密着していなくても、3位が十分近ければ3色へ倒す。
   // 例: 20 / 15 / 12 / 9 のような形。
   if (gaps.d23 <= TRI_CLOSE_GAP) {
-    return buildTriResult(
+    return buildCorrectedTriResult(
+      rankedColors,
       topThreeColors,
       gaps,
       `d23 <= ${TRI_CLOSE_GAP} により、2位と3位が近いため3色判定。`,
@@ -318,7 +526,8 @@ export function diagnoseFromRankedColors(rankedColors) {
 
   // 7. それ以外は2色
   // 単色閾値に届かず、3色としても近くないなら、上位2色を結果にする。
-  return buildDualResult(
+  return buildCorrectedDualResult(
+    rankedColors,
     topTwoColors,
     gaps,
     "単色閾値に届かず、上位3色のまとまりも弱いため2色判定。",
