@@ -14,12 +14,17 @@
  *    - d23 = s2 - s3
  *    - d34 = s3 - s4
  * 3. 基本ルール
- *    - 単色: d12 >= 4
- *    - 2色 : d12 <= 2 かつ d23 >= 4
- *    - 3色 : d12 <= 2 かつ d23 <= 2 かつ d34 >= 4
- * 4. 曖昧ケース
- *    - 差が 3 のケースは strongCount / hitCount を参考にする
- *    - なお曖昧なら、複合色側（1色より2色、2色より3色）を優先する
+ *    - 単色: d12 >= 8
+ *    - 3色 : d12 <= 3 かつ d23 <= 3
+ *    - 2色 : d12 <= 5 かつ d23 >= 4
+ * 4. 中間ケース
+ *    - d12 が 6〜7 の場合は、単色にせず2色へ倒す
+ *    - 2色と3色で迷う場合は、上位3色が近ければ3色を優先する
+ *
+ * 設計意図:
+ * - 4点差程度の上振れでは単色にしない
+ * - 単色は「かなり明確に1色が突出した場合」に限定する
+ * - 診断結果として、単色 / 2色 / 3色がすべて自然に出るようにする
  */
 
 import { COLORS, FRIENDLY_RELATIONS, ENEMY_RELATIONS } from "../config/constants.js";
@@ -28,6 +33,11 @@ import { COLORS, FRIENDLY_RELATIONS, ENEMY_RELATIONS } from "../config/constants
  * 結果型
  * @typedef {"mono" | "dual" | "tri"} ResultType
  */
+
+export const MONO_THRESHOLD = 8;
+export const TRI_CLOSE_GAP = 3;
+export const DUAL_CLOSE_GAP = 5;
+export const DUAL_SEPARATION_GAP = 4;
 
 /**
  * 色配列が友好2色かどうかを判定
@@ -126,7 +136,11 @@ export function computeScoreGaps(rankedColors) {
   const [s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0] = values;
 
   return {
-    s1, s2, s3, s4, s5,
+    s1,
+    s2,
+    s3,
+    s4,
+    s5,
     d12: s1 - s2,
     d23: s2 - s3,
     d34: s3 - s4,
@@ -134,54 +148,72 @@ export function computeScoreGaps(rankedColors) {
 }
 
 /**
- * 2色候補の曖昧ケース補助判定
- * 差が3のときに strong / hit を見る
+ * 診断結果オブジェクトを作る
  *
- * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
- * @returns {boolean}
+ * @param {ResultType} type
+ * @param {string[]} colors
+ * @param {ReturnType<typeof computeScoreGaps>} gaps
+ * @param {{
+ *   reason: string,
+ *   dualKind?: "friendly" | "enemy" | "other",
+ *   triKind?: "shard" | "wedge" | "other"
+ * }} meta
+ * @returns {{
+ *   type: ResultType,
+ *   colors: string[],
+ *   resultKey: string,
+ *   gaps: ReturnType<typeof computeScoreGaps>,
+ *   meta: {
+ *     dualKind?: "friendly" | "enemy" | "other",
+ *     triKind?: "shard" | "wedge" | "other",
+ *     reason: string
+ *   }
+ * }}
  */
-export function shouldLeanDual(rankedColors) {
-  const first = rankedColors[0];
-  const second = rankedColors[1];
-  const third = rankedColors[2];
+export function buildDiagnosisResult(type, colors, gaps, meta) {
+  const normalizedColors = normalizeColors(colors);
 
-  if (!first || !second) {
-    return false;
-  }
-
-  const pairStrong = (first?.strongCount ?? 0) + (second?.strongCount ?? 0);
-  const pairHit = (first?.hitCount ?? 0) + (second?.hitCount ?? 0);
-  const thirdStrong = third?.strongCount ?? 0;
-  const thirdHit = third?.hitCount ?? 0;
-
-  if (pairStrong > thirdStrong + 1) return true;
-  if (pairHit > thirdHit + 1) return true;
-
-  return true;
+  return {
+    type,
+    colors: normalizedColors,
+    resultKey: buildResultKey(normalizedColors),
+    gaps,
+    meta,
+  };
 }
 
 /**
- * 3色候補の曖昧ケース補助判定
- * 差が3のときは 3色側をやや優先する
+ * 2色結果を作る
  *
- * @param {Array<{color:string,total:number,strongCount:number,hitCount:number}>} rankedColors
- * @returns {boolean}
+ * @param {string[]} colors
+ * @param {ReturnType<typeof computeScoreGaps>} gaps
+ * @param {string} reason
+ * @returns {ReturnType<typeof buildDiagnosisResult>}
  */
-export function shouldLeanTri(rankedColors) {
-  const first = rankedColors[0];
-  const second = rankedColors[1];
-  const third = rankedColors[2];
-  const fourth = rankedColors[3];
+export function buildDualResult(colors, gaps, reason) {
+  const dualKind = isFriendlyDual(colors) ? "friendly" : isEnemyDual(colors) ? "enemy" : "other";
 
-  const triStrong = (first?.strongCount ?? 0) + (second?.strongCount ?? 0) + (third?.strongCount ?? 0);
-  const triHit = (first?.hitCount ?? 0) + (second?.hitCount ?? 0) + (third?.hitCount ?? 0);
-  const fourthStrong = fourth?.strongCount ?? 0;
-  const fourthHit = fourth?.hitCount ?? 0;
+  return buildDiagnosisResult("dual", colors, gaps, {
+    dualKind,
+    reason,
+  });
+}
 
-  if (triStrong > fourthStrong + 1) return true;
-  if (triHit > fourthHit + 1) return true;
+/**
+ * 3色結果を作る
+ *
+ * @param {string[]} colors
+ * @param {ReturnType<typeof computeScoreGaps>} gaps
+ * @param {string} reason
+ * @returns {ReturnType<typeof buildDiagnosisResult>}
+ */
+export function buildTriResult(colors, gaps, reason) {
+  const triKind = getTriadKind(colors);
 
-  return true;
+  return buildDiagnosisResult("tri", colors, gaps, {
+    triKind,
+    reason,
+  });
 }
 
 /**
@@ -214,131 +246,72 @@ export function diagnoseFromRankedColors(rankedColors) {
   const top2 = rankedColors[1]?.color;
   const top3 = rankedColors[2]?.color;
 
-  // 明確な単色
-  if (gaps.d12 >= 4) {
-    const colors = [top1];
-    return {
-      type: "mono",
-      colors,
-      resultKey: buildResultKey(colors),
-      gaps,
-      meta: {
-        reason: "d12 >= 4 により 1位が明確に突出しているため単色判定。",
-      },
-    };
+  if (!top1 || !top2 || !top3) {
+    throw new Error("diagnoseFromRankedColors: top colors are missing.");
   }
 
-  // 明確な2色
-  if (gaps.d12 <= 2 && gaps.d23 >= 4) {
-    const colors = [top1, top2];
-    const dualKind = isFriendlyDual(colors) ? "friendly" : isEnemyDual(colors) ? "enemy" : "other";
-    return {
-      type: "dual",
-      colors: normalizeColors(colors),
-      resultKey: buildResultKey(colors),
-      gaps,
-      meta: {
-        dualKind,
-        reason: "d12 <= 2 かつ d23 >= 4 により上位2色がまとまり、3位以下と分断しているため2色判定。",
-      },
-    };
+  const topTwoColors = [top1, top2];
+  const topThreeColors = [top1, top2, top3];
+
+  // 1. 明確な単色
+  // 4点差では単色が出すぎるため、8点差以上に引き上げる。
+  if (gaps.d12 >= MONO_THRESHOLD) {
+    return buildDiagnosisResult("mono", [top1], gaps, {
+      reason: `d12 >= ${MONO_THRESHOLD} により、1位が明確に突出しているため単色判定。`,
+    });
   }
 
-  // 明確な3色
-  if (gaps.d12 <= 2 && gaps.d23 <= 2 && gaps.d34 >= 4) {
-    const colors = [top1, top2, top3];
-    const triKind = getTriadKind(colors);
-    return {
-      type: "tri",
-      colors: normalizeColors(colors),
-      resultKey: buildResultKey(colors),
+  // 2. 明確な3色
+  // 上位3色が近い場合は、2色より3色を優先する。
+  // 例: 20 / 18 / 16 / 10 のような形。
+  if (gaps.d12 <= TRI_CLOSE_GAP && gaps.d23 <= TRI_CLOSE_GAP) {
+    return buildTriResult(
+      topThreeColors,
       gaps,
-      meta: {
-        triKind,
-        reason: "d12 <= 2 かつ d23 <= 2 かつ d34 >= 4 により上位3色がまとまり、4位以下と分断しているため3色判定。",
-      },
-    };
+      `d12 <= ${TRI_CLOSE_GAP} かつ d23 <= ${TRI_CLOSE_GAP} により、上位3色が近いため3色判定。`,
+    );
   }
 
-  // 曖昧ケース1: 1位と2位の差が3
-  if (gaps.d12 == 3) {
-    const colors = [top1, top2];
-    const dualKind = isFriendlyDual(colors) ? "friendly" : isEnemyDual(colors) ? "enemy" : "other";
-    return {
-      type: "dual",
-      colors: normalizeColors(colors),
-      resultKey: buildResultKey(colors),
+  // 3. 明確な2色
+  // 1位と2位がある程度近く、2位と3位が離れていれば2色。
+  // 例: 20 / 16 / 10 / 9 のような形。
+  if (gaps.d12 <= DUAL_CLOSE_GAP && gaps.d23 >= DUAL_SEPARATION_GAP) {
+    return buildDualResult(
+      topTwoColors,
       gaps,
-      meta: {
-        dualKind,
-        reason: "d12 == 3 の曖昧ケース。単色より複合色を優先し、2色側へ倒した。",
-      },
-    };
+      `d12 <= ${DUAL_CLOSE_GAP} かつ d23 >= ${DUAL_SEPARATION_GAP} により、上位2色がまとまり3位以下と分断しているため2色判定。`,
+    );
   }
 
-  // 曖昧ケース2: 上位3色が近く、3位と4位の差が3
-  if (gaps.d12 <= 2 && gaps.d23 <= 2 && gaps.d34 == 3) {
-    const colors = [top1, top2, top3];
-    const triKind = getTriadKind(colors);
-    return {
-      type: "tri",
-      colors: normalizeColors(colors),
-      resultKey: buildResultKey(colors),
+  // 4. 単色未満だが1位がそこそこ強いケース
+  // d12 が 6〜7 程度なら、単色にはせず上位2色にする。
+  // これで「少し強いだけの単色」を抑える。
+  if (gaps.d12 >= DUAL_CLOSE_GAP + 1) {
+    return buildDualResult(
+      topTwoColors,
       gaps,
-      meta: {
-        triKind,
-        reason: "d34 == 3 の曖昧ケース。2色より3色を優先し、3色側へ倒した。",
-      },
-    };
+      `d12 は ${MONO_THRESHOLD} 未満だが ${DUAL_CLOSE_GAP + 1} 以上。単色にはせず、1位と2位の2色判定。`,
+    );
   }
 
-  // その他の中間ケース:
-  // 複合色を優先する思想に従い、
-  // 上位3色のまとまりが少しでも見えるなら 3色へ、
-  // そうでなければ 2色へ倒す
-  if (gaps.d12 <= 2 && gaps.d23 <= 3) {
-    const colors = [top1, top2, top3];
-    const triKind = getTriadKind(colors);
-    return {
-      type: "tri",
-      colors: normalizeColors(colors),
-      resultKey: buildResultKey(colors),
+  // 5. 2位と3位が近い中間ケース
+  // 1位・2位・3位が完全に密着していなくても、3位が十分近ければ3色へ倒す。
+  // 例: 20 / 15 / 12 / 9 のような形。
+  if (gaps.d23 <= TRI_CLOSE_GAP) {
+    return buildTriResult(
+      topThreeColors,
       gaps,
-      meta: {
-        triKind,
-        reason: "中間ケース。上位3色の近さを優先して3色判定。",
-      },
-    };
+      `d23 <= ${TRI_CLOSE_GAP} により、2位と3位が近いため3色判定。`,
+    );
   }
 
-  if (gaps.d12 <= 3) {
-    const colors = [top1, top2];
-    const dualKind = isFriendlyDual(colors) ? "friendly" : isEnemyDual(colors) ? "enemy" : "other";
-    return {
-      type: "dual",
-      colors: normalizeColors(colors),
-      resultKey: buildResultKey(colors),
-      gaps,
-      meta: {
-        dualKind,
-        reason: "中間ケース。上位2色の近さを優先して2色判定。",
-      },
-    };
-  }
-
-  // 最終フォールバック
-  {
-    const colors = [top1];
-    return {
-      type: "mono",
-      colors,
-      resultKey: buildResultKey(colors),
-      gaps,
-      meta: {
-        reason: "最終フォールバックとして単色判定。",
-      },
-    };
-  }
+  // 6. それ以外は2色
+  // 単色閾値に届かず、3色としても近くないなら、上位2色を結果にする。
+  return buildDualResult(
+    topTwoColors,
+    gaps,
+    "単色閾値に届かず、上位3色のまとまりも弱いため2色判定。",
+  );
 }
 
 /**

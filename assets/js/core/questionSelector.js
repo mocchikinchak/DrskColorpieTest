@@ -1,122 +1,54 @@
 /**
  * questionSelector.js
  *
- * 偏り除去版
+ * 色別グループ選出版
  *
- * 修正方針:
- * - 色ごとの抽出順を固定しない
- * - round-robin で 1周ずつ各色から選ぶ
- * - 各ラウンドで色順をシャッフルする
- * - groupId / axis 制約は維持する
+ * 仕様:
+ * - 15問中、各プライマリカラーから3問ずつ選出する
+ * - group_white / group_blue / group_black / group_red / group_green は
+ *   それぞれ該当 primaryColor の質問だけを持つ前提
+ * - 同じ質問IDは選出しない
+ * - 最後に15問をシャッフルして表示順をランダム化する
  *
- * これにより、
- * white -> blue -> black -> red -> green の固定順で
- * 先手有利になる問題をかなり抑える。
+ * 注意:
+ * - scores には一切触れない
+ * - 出題バランスは primaryColor で保証する
  */
 
 import { COLORS, DRAW_COUNT } from "../config/constants.js";
 
+const GROUP_ID_BY_COLOR = {
+  white: "group_white",
+  blue: "group_blue",
+  black: "group_black",
+  red: "group_red",
+  green: "group_green",
+};
+
 /**
  * Fisher-Yates shuffle
- * 元配列を壊さずに新配列を返す
+ * 元配列を壊さずに新配列を返す。
+ *
  * @template T
  * @param {T[]} array
  * @returns {T[]}
  */
 export function shuffleArray(array) {
   const cloned = [...array];
+
   for (let i = cloned.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     [cloned[i], cloned[j]] = [cloned[j], cloned[i]];
   }
+
   return cloned;
 }
 
 /**
- * primaryColor ごとに問題をグループ化する
- * @param {Array<object>} questions
- * @returns {Record<string, Array<object>>}
- */
-export function groupQuestionsByPrimaryColor(questions) {
-  const grouped = Object.fromEntries(COLORS.map((color) => [color, []]));
-
-  for (const question of questions) {
-    if (!question?.primaryColor) continue;
-    if (!grouped[question.primaryColor]) {
-      grouped[question.primaryColor] = [];
-    }
-    grouped[question.primaryColor].push(question);
-  }
-
-  // 候補順自体も色ごとにシャッフルしておく
-  for (const color of Object.keys(grouped)) {
-    grouped[color] = shuffleArray(grouped[color]);
-  }
-
-  return grouped;
-}
-
-/**
- * 指定した質問を今の選抜結果に追加してよいか判定する
- * @param {object} question
- * @param {object[]} selected
- * @param {Map<string, number>} axisCounts
- * @param {Set<string>} usedGroupIds
- * @param {number} maxSameAxis
- * @param {boolean} allowGroupDuplicate
- * @returns {boolean}
- */
-export function canSelectQuestion(
-  question,
-  selected,
-  axisCounts,
-  usedGroupIds,
-  maxSameAxis,
-  allowGroupDuplicate = false,
-) {
-  if (!question) return false;
-
-  if (!allowGroupDuplicate && question.groupId && usedGroupIds.has(question.groupId)) {
-    return false;
-  }
-
-  const axis = question.axis ?? "unspecified_axis";
-  const currentAxisCount = axisCounts.get(axis) ?? 0;
-  if (currentAxisCount >= maxSameAxis) {
-    return false;
-  }
-
-  const alreadySelected = selected.some((item) => item.id === question.id);
-  if (alreadySelected) {
-    return false;
-  }
-
-  return true;
-}
-
-/**
- * 問題を選抜状態に追加する
- * @param {object} question
- * @param {object[]} selected
- * @param {Map<string, number>} axisCounts
- * @param {Set<string>} usedGroupIds
- */
-export function registerQuestion(question, selected, axisCounts, usedGroupIds) {
-  selected.push(question);
-
-  const axis = question.axis ?? "unspecified_axis";
-  axisCounts.set(axis, (axisCounts.get(axis) ?? 0) + 1);
-
-  if (question.groupId) {
-    usedGroupIds.add(question.groupId);
-  }
-}
-
-/**
- * 各色の割当数を決める
- * 例: DRAW_COUNT=15, COLORS=5 なら 3 問ずつ
- * 端数がある場合も偏りが固定色に乗らないよう、
- * remainder の配布先は毎回シャッフルする。
+ * DRAW_COUNT と COLORS から、各色の選出数を決める。
+ * 通常は 15問 / 5色 = 各3問。
+ *
+ * DRAW_COUNT が5で割り切れない場合は、端数をランダムな色に1問ずつ配る。
  *
  * @returns {Record<string, number>}
  */
@@ -124,7 +56,6 @@ export function buildPrimaryColorQuotas() {
   const base = Math.floor(DRAW_COUNT / COLORS.length);
   const remainder = DRAW_COUNT % COLORS.length;
 
-  /** @type {Record<string, number>} */
   const quotas = Object.fromEntries(COLORS.map((color) => [color, base]));
 
   const shuffledColors = shuffleArray(COLORS);
@@ -136,177 +67,95 @@ export function buildPrimaryColorQuotas() {
 }
 
 /**
- * 1色分の候補から 1問だけ選ぶ
- * 条件は phase に応じて変える
+ * 質問を primaryColor ごとに分類する。
+ * groupId が group_white 等であることも検証する。
+ *
+ * @param {Array<object>} questions
+ * @returns {Record<string, Array<object>>}
+ */
+export function groupQuestionsByPrimaryColor(questions) {
+  const grouped = Object.fromEntries(COLORS.map((color) => [color, []]));
+
+  for (const question of questions) {
+    const primaryColor = question?.primaryColor;
+
+    if (!COLORS.includes(primaryColor)) {
+      throw new Error(
+        `groupQuestionsByPrimaryColor: invalid primaryColor. id=${question?.id}, primaryColor=${primaryColor}`,
+      );
+    }
+
+    const expectedGroupId = GROUP_ID_BY_COLOR[primaryColor];
+    if (question.groupId !== expectedGroupId) {
+      throw new Error(
+        `groupQuestionsByPrimaryColor: invalid groupId. id=${question?.id}, expected=${expectedGroupId}, actual=${question.groupId}`,
+      );
+    }
+
+    grouped[primaryColor].push(question);
+  }
+
+  return grouped;
+}
+
+/**
+ * 指定色の山札から必要数だけ選ぶ。
  *
  * @param {object[]} candidates
- * @param {object[]} selected
- * @param {Map<string, number>} axisCounts
- * @param {Set<string>} usedGroupIds
- * @param {{maxSameAxis:number, allowGroupDuplicate:boolean}} phase
- * @returns {object | null}
+ * @param {number} quota
+ * @param {string} color
+ * @returns {object[]}
  */
-export function pickOneCandidate(
-  candidates,
-  selected,
-  axisCounts,
-  usedGroupIds,
-  phase,
-) {
-  for (const question of candidates) {
-    if (
-      canSelectQuestion(
-        question,
-        selected,
-        axisCounts,
-        usedGroupIds,
-        phase.maxSameAxis,
-        phase.allowGroupDuplicate,
-      )
-    ) {
-      return question;
-    }
+export function pickQuestionsForColor(candidates, quota, color) {
+  if (candidates.length < quota) {
+    throw new Error(
+      `pickQuestionsForColor: not enough questions for ${color}. required=${quota}, actual=${candidates.length}`,
+    );
   }
 
-  return null;
+  return shuffleArray(candidates).slice(0, quota);
 }
 
 /**
- * quota を round-robin で埋める
- * 各ラウンドで色順をシャッフルするため、特定色の先手有利を抑えやすい。
+ * 主色分布を数える。
+ * デバッグ・検証用。
  *
- * @param {Record<string, object[]>} grouped
- * @param {Record<string, number>} quotas
- * @param {object[]} selected
- * @param {Map<string, number>} axisCounts
- * @param {Set<string>} usedGroupIds
- */
-export function pickQuestionsRoundRobin(
-  grouped,
-  quotas,
-  selected,
-  axisCounts,
-  usedGroupIds,
-) {
-  /** @type {Array<{maxSameAxis:number, allowGroupDuplicate:boolean}>} */
-  const phases = [
-    { maxSameAxis: 2, allowGroupDuplicate: false },
-    { maxSameAxis: 3, allowGroupDuplicate: false },
-    { maxSameAxis: 3, allowGroupDuplicate: true },
-  ];
-
-  for (const phase of phases) {
-    let progress = true;
-
-    while (progress) {
-      progress = false;
-
-      const colorOrder = shuffleArray(COLORS);
-
-      for (const color of colorOrder) {
-        if ((quotas[color] ?? 0) <= 0) continue;
-
-        const picked = pickOneCandidate(
-          grouped[color] ?? [],
-          selected,
-          axisCounts,
-          usedGroupIds,
-          phase,
-        );
-
-        if (picked) {
-          registerQuestion(picked, selected, axisCounts, usedGroupIds);
-          quotas[color] -= 1;
-          progress = true;
-        }
-
-        if (selected.length >= DRAW_COUNT) return;
-      }
-
-      const remainingQuota = Object.values(quotas).some((value) => value > 0);
-      if (!remainingQuota) return;
-    }
-  }
-}
-
-/**
- * まだ足りない分を全候補から補完する
- *
- * @param {object[]} questions
- * @param {object[]} selected
- * @param {Map<string, number>} axisCounts
- * @param {Set<string>} usedGroupIds
- */
-export function fillRemainingQuestions(
-  questions,
-  selected,
-  axisCounts,
-  usedGroupIds,
-) {
-  const shuffled = shuffleArray(questions);
-
-  /** @type {Array<{maxSameAxis:number, allowGroupDuplicate:boolean}>} */
-  const phases = [
-    { maxSameAxis: 3, allowGroupDuplicate: false },
-    { maxSameAxis: 4, allowGroupDuplicate: false },
-    { maxSameAxis: 4, allowGroupDuplicate: true },
-    { maxSameAxis: Number.POSITIVE_INFINITY, allowGroupDuplicate: true },
-  ];
-
-  for (const phase of phases) {
-    for (const question of shuffled) {
-      if (selected.length >= DRAW_COUNT) return;
-
-      if (
-        canSelectQuestion(
-          question,
-          selected,
-          axisCounts,
-          usedGroupIds,
-          phase.maxSameAxis,
-          phase.allowGroupDuplicate,
-        )
-      ) {
-        registerQuestion(question, selected, axisCounts, usedGroupIds);
-      }
-    }
-
-    if (selected.length >= DRAW_COUNT) return;
-  }
-}
-
-/**
- * 主色分布を数える
  * @param {object[]} questions
  * @returns {Record<string, number>}
  */
 export function countPrimaryColors(questions) {
   const counts = Object.fromEntries(COLORS.map((color) => [color, 0]));
+
   for (const question of questions) {
     if (question?.primaryColor && counts[question.primaryColor] !== undefined) {
       counts[question.primaryColor] += 1;
     }
   }
+
   return counts;
 }
 
 /**
- * axis 分布を数える
+ * groupId 分布を数える。
+ * デバッグ・検証用。
+ *
  * @param {object[]} questions
  * @returns {Record<string, number>}
  */
-export function countAxes(questions) {
-  /** @type {Record<string, number>} */
+export function countGroups(questions) {
   const counts = {};
+
   for (const question of questions) {
-    const axis = question?.axis ?? "unspecified_axis";
-    counts[axis] = (counts[axis] ?? 0) + 1;
+    const groupId = question?.groupId ?? "undefined_group";
+    counts[groupId] = (counts[groupId] ?? 0) + 1;
   }
+
   return counts;
 }
 
 /**
  * メイン関数
+ *
  * @param {object[]} questions
  * @returns {object[]}
  */
@@ -321,33 +170,28 @@ export function selectQuestions(questions) {
     );
   }
 
-  const grouped = groupQuestionsByPrimaryColor(questions);
   const quotas = buildPrimaryColorQuotas();
+  const grouped = groupQuestionsByPrimaryColor(questions);
 
-  /** @type {object[]} */
   const selected = [];
-  const axisCounts = new Map();
-  const usedGroupIds = new Set();
 
-  pickQuestionsRoundRobin(
-    grouped,
-    quotas,
-    selected,
-    axisCounts,
-    usedGroupIds,
-  );
-
-  if (selected.length < DRAW_COUNT) {
-    fillRemainingQuestions(questions, selected, axisCounts, usedGroupIds);
+  for (const color of COLORS) {
+    const picked = pickQuestionsForColor(grouped[color], quotas[color], color);
+    selected.push(...picked);
   }
 
-  if (selected.length < DRAW_COUNT) {
+  const selectedIds = new Set(selected.map((question) => question.id));
+  if (selectedIds.size !== selected.length) {
+    throw new Error("selectQuestions: duplicated question id detected.");
+  }
+
+  if (selected.length !== DRAW_COUNT) {
     throw new Error(
-      `selectQuestions: could not satisfy draw count. required=${DRAW_COUNT}, actual=${selected.length}`,
+      `selectQuestions: invalid selected count. required=${DRAW_COUNT}, actual=${selected.length}`,
     );
   }
 
-  return shuffleArray(selected).slice(0, DRAW_COUNT);
+  return shuffleArray(selected);
 }
 
 export default selectQuestions;

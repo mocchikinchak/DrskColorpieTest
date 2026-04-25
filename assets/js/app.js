@@ -130,6 +130,19 @@ function openXShare() {
 function renderTitle() {
   const titleEl = getElement("title");
   titleEl.textContent = "DRSKカラーパイ診断";
+  titleEl.style.cursor = "pointer";
+
+  titleEl.onclick = () => {
+    state.userName = "";
+    state.selectedQuestions = [];
+    state.currentIndex = 0;
+    state.answers = {};
+    state.scoreSummary = null;
+    state.diagnosis = null;
+    state.previewResultKey = null;
+    clearResultUrl();
+    renderApp();
+  };
 }
 
 function renderProgress() {

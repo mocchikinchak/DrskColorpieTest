@@ -2,7 +2,7 @@ export const questions = [
   {
     "id": "q001",
     "axis": "axis",
-    "groupId": "group_0",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -12,12 +12,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "チームで動くとき、まず整えるべきものは？",
+    "text": "公共の場で迷惑行為を見かけた。どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "全員が納得できる進め方と役割分担を先に固める",
+        "text": "注意や通報など、規則に沿って対処する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -26,7 +26,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "混乱しないように手順と判断基準を整理して共有する",
+        "text": "状況や背景を観察して判断する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -35,7 +35,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "それぞれの得意なやり方を見て、無理のない形に合わせる",
+        "text": "自然に収まるなら見守る",
         "scores": {
           "green": 2,
           "white": 1
@@ -44,7 +44,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "全体よりも自分が動きやすく得をする立ち回りを優先する",
+        "text": "自分に関係なければ関与しない",
         "scores": {
           "black": 2,
           "red": 2
@@ -56,7 +56,7 @@ export const questions = [
   {
     "id": "q002",
     "axis": "axis",
-    "groupId": "group_0",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -66,12 +66,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "予想外の問題が起きたとき、最初に取る行動は？",
+    "text": "未知の分野に触れるとき、まず取る行動は？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "原因と影響範囲を切り分けて、落ち着いて対処順を決める",
+        "text": "構造やルールを把握しようとする",
         "scores": {
           "blue": 2,
           "white": 1
@@ -80,7 +80,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "被害が広がらないように最低限のルールと連絡網を整える",
+        "text": "周囲と協力して進め方を整える",
         "scores": {
           "white": 2,
           "blue": 1
@@ -89,7 +89,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "使える手段を見極めて、自分に有利な突破口を探す",
+        "text": "活かせるポイントを探す",
         "scores": {
           "black": 2,
           "blue": 1
@@ -98,7 +98,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "細かく考え込まず、その場の感覚で素早く動いて流れに乗る",
+        "text": "実際に体験しながら慣れていく",
         "scores": {
           "red": 2,
           "green": 2
@@ -110,7 +110,7 @@ export const questions = [
   {
     "id": "q003",
     "axis": "axis",
-    "groupId": "group_0",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -120,12 +120,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "他人と意見がぶつかったときの対応は？",
+    "text": "フリーマーケットに来たとき、どう動く？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "相手の狙いを整理しつつ、こちらに有利な落とし所を探る",
+        "text": "掘り出し物を見つけて得を狙う",
         "scores": {
           "black": 2,
           "blue": 1
@@ -134,7 +134,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "論点を分けて、何が食い違っているのかを順番に確認する",
+        "text": "相場や価値を見極めて選ぶ",
         "scores": {
           "blue": 2,
           "black": 1
@@ -143,7 +143,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "本音をはっきり出して、自分が納得できる形まで押し切る",
+        "text": "雰囲気を楽しみながら見て回る",
         "scores": {
           "red": 2,
           "black": 1
@@ -152,7 +152,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "場の空気を荒らさないように、皆が収まりやすい形に寄せる",
+        "text": "店のルールや順番を守って行動する",
         "scores": {
           "white": 2,
           "green": 2
@@ -164,7 +164,7 @@ export const questions = [
   {
     "id": "q004",
     "axis": "axis",
-    "groupId": "group_1",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -174,12 +174,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "新しい環境に入ったときの振る舞いは？",
+    "text": "お祭りに来たとき、最初にすることは何？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "まずは実際に動きながら、その場のノリと勢いをつかむ",
+        "text": "気になった屋台にすぐ向かう",
         "scores": {
           "red": 2,
           "black": 1
@@ -188,7 +188,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "誰が何を握っているかを見て、自分の立ち位置を確保する",
+        "text": "タイミングを見て、狙い目を探す",
         "scores": {
           "black": 2,
           "red": 1
@@ -197,7 +197,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "空気や慣習を観察して、無理なく馴染める距離感を探る",
+        "text": "人ごみに流されてみる",
         "scores": {
           "green": 2,
           "red": 1
@@ -206,7 +206,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "既存の流れやルールを把握してから、慎重に合わせていく",
+        "text": "混雑状況やゴミ箱の位置を確認する",
         "scores": {
           "white": 2,
           "blue": 2
@@ -218,7 +218,7 @@ export const questions = [
   {
     "id": "q005",
     "axis": "axis",
-    "groupId": "group_1",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -228,12 +228,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "ルールに対するあなたのスタンスは？",
+    "text": "公園で過ごすとき、どんな時間の使い方をする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "必要なら従うが、窮屈なら自分の感覚を優先して破ることもある",
+        "text": "ベンチでのんびり過ごす",
         "scores": {
           "green": 2,
           "red": 1
@@ -242,7 +242,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "生きやすくなるなら利用するし、邪魔なら抜け道も探す",
+        "text": "遊具で遊ぶ",
         "scores": {
           "red": 2,
           "green": 1
@@ -251,7 +251,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "皆が安心して動けるなら、ある程度の決まりは必要だと思う",
+        "text": "友達とおしゃべり",
         "scores": {
           "white": 2,
           "green": 1
@@ -260,7 +260,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "まず疑って構造を見直す。非合理なら従う理由はない",
+        "text": "周囲の人や環境を観察して過ごす",
         "scores": {
           "blue": 2,
           "black": 2
@@ -272,7 +272,7 @@ export const questions = [
   {
     "id": "q006",
     "axis": "axis",
-    "groupId": "group_1",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -282,12 +282,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "重要な決断をするときの軸は？",
+    "text": "役割分担が曖昧な仕事を任されたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "周囲との整合が取れていて、長く安定するかどうか",
+        "text": "役割と手順を明確に定義する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -296,7 +296,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "情報を集めて比較し、最も納得できる見通しを選ぶ",
+        "text": "情報を整理して最適な進め方を設計する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -305,7 +305,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "無理がなく、自分や状況の流れに合っているかどうか",
+        "text": "無理のない範囲でできることを積み重ねる",
         "scores": {
           "green": 2,
           "white": 1
@@ -314,7 +314,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "損得と欲しい結果を直視して、自分の意思で取りに行けるか",
+        "text": "自分に有利な部分から手を付ける",
         "scores": {
           "black": 2,
           "red": 2
@@ -326,7 +326,7 @@ export const questions = [
   {
     "id": "q007",
     "axis": "axis",
-    "groupId": "group_2",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -336,12 +336,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "他人から頼まれごとをされたときは？",
+    "text": "情報が不足している状況であなたはどうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "内容を整理して、できる範囲と優先順位を先に確認する",
+        "text": "仮説を立てて検証を重ねる",
         "scores": {
           "blue": 2,
           "white": 1
@@ -350,7 +350,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら引き受けるが、全員が回る形になるよう条件を整える",
+        "text": "周囲の意見を集めて調整する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -359,7 +359,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "見返りや今後の使い道も含めて、受ける価値があるか考える",
+        "text": "有利になりそうな選択を取る",
         "scores": {
           "black": 2,
           "blue": 1
@@ -368,7 +368,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "気分とタイミングが合えば乗るし、合わなければその場で断る",
+        "text": "感覚に従って決める",
         "scores": {
           "red": 2,
           "green": 2
@@ -380,7 +380,7 @@ export const questions = [
   {
     "id": "q008",
     "axis": "axis",
-    "groupId": "group_2",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -390,12 +390,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "長期目標に対する姿勢は？",
+    "text": "友人同士での食事会の支払い時、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "途中で手段を調整しながらでも、現実的に達成できる形を詰める",
+        "text": "自分が一番払わずに済む方法を考える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -404,7 +404,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "理想像から逆算して、足りないものを順番に埋めていく",
+        "text": "それぞれが食べた分だけ勘定する",
         "scores": {
           "blue": 2,
           "black": 1
@@ -413,7 +413,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "欲しい結果のためなら、手段はかなり柔軟に切り替える",
+        "text": "早く店を出たいからざっくり払う",
         "scores": {
           "red": 2,
           "black": 1
@@ -422,7 +422,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "先を決めすぎず、その時々の熱や勢いで進路を変えていく",
+        "text": "公平になるようにきっちり割る",
         "scores": {
           "white": 2,
           "green": 2
@@ -434,7 +434,7 @@ export const questions = [
   {
     "id": "q009",
     "axis": "axis",
-    "groupId": "group_2",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -444,12 +444,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "集団の中で自然に取る役割は？",
+    "text": "カラオケで最初に歌う人を決めるとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "空気を動かすきっかけを作り、停滞した場を前に進める",
+        "text": "マイクを先にとって歌いだす",
         "scores": {
           "red": 2,
           "black": 1
@@ -458,7 +458,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら主導権を握り、結果が出る形に人を動かす",
+        "text": "デンモクを独り占めする",
         "scores": {
           "black": 2,
           "red": 1
@@ -467,7 +467,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "全体の流れを見ながら、無理のない配置や助け合いを整える",
+        "text": "勝手に決まるのを待つ",
         "scores": {
           "green": 2,
           "red": 1
@@ -476,7 +476,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "表に立つより、仕組みや連携を整えて場を安定させる",
+        "text": "目上の人から歌ってもらう",
         "scores": {
           "white": 2,
           "blue": 2
@@ -488,7 +488,7 @@ export const questions = [
   {
     "id": "q010",
     "axis": "axis",
-    "groupId": "group_3",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -498,12 +498,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "突発的なチャンスが来たときの判断は？",
+    "text": "長く使っている物があるとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "今の流れや自分の感覚に合うなら、まず掴んでみる",
+        "text": "手入れしながら使い続ける",
         "scores": {
           "green": 2,
           "red": 1
@@ -512,7 +512,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "面白いと思えば多少荒くても飛び込んでから考える",
+        "text": "気分で新しいものと使い分ける",
         "scores": {
           "red": 2,
           "green": 1
@@ -521,7 +521,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "周囲や土台との相性を見て、無理のない形で乗れるか確かめる",
+        "text": "必要なものとして丁寧に維持する",
         "scores": {
           "white": 2,
           "green": 1
@@ -530,7 +530,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "条件と再現性を見て、罠でないと判断できた時だけ動く",
+        "text": "価値があるうちに売る",
         "scores": {
           "blue": 2,
           "black": 2
@@ -542,7 +542,7 @@ export const questions = [
   {
     "id": "q011",
     "axis": "axis",
-    "groupId": "group_3",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -552,12 +552,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "チームで動くとき、まず整えるべきものは？",
+    "text": "共有財産の使い方で意見が割れたとき、どう決める？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "全員が納得できる進め方と役割分担を先に固める",
+        "text": "明文化されたルールを作って運用する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -566,7 +566,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "混乱しないように手順と判断基準を整理して共有する",
+        "text": "データや利用実績をもとに最適化する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -575,7 +575,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "それぞれの得意なやり方を見て、無理のない形に合わせる",
+        "text": "自然に落ち着く形に任せる",
         "scores": {
           "green": 2,
           "white": 1
@@ -584,7 +584,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "全体よりも自分が動きやすく得をする立ち回りを優先する",
+        "text": "使いやすい人が主導して決める",
         "scores": {
           "black": 2,
           "red": 2
@@ -596,7 +596,7 @@ export const questions = [
   {
     "id": "q012",
     "axis": "axis",
-    "groupId": "group_3",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -606,12 +606,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "予想外の問題が起きたとき、最初に取る行動は？",
+    "text": "同じ作業を繰り返す必要があるとき、どう工夫する？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "原因と影響範囲を切り分けて、落ち着いて対処順を決める",
+        "text": "手順を最適化して精度を上げる",
         "scores": {
           "blue": 2,
           "white": 1
@@ -620,7 +620,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "被害が広がらないように最低限のルールと連絡網を整える",
+        "text": "負担が偏らないように配慮する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -629,7 +629,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "使える手段を見極めて、自分に有利な突破口を探す",
+        "text": "効率よく利益につながる形に変える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -638,7 +638,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "細かく考え込まず、その場の感覚で素早く動いて流れに乗る",
+        "text": "気分に合わせてやり方を変える",
         "scores": {
           "red": 2,
           "green": 2
@@ -650,7 +650,7 @@ export const questions = [
   {
     "id": "q013",
     "axis": "axis",
-    "groupId": "group_4",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -660,12 +660,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "他人と意見がぶつかったときの対応は？",
+    "text": "セール会場に入ったとき、最初に何を見る？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "相手の狙いを整理しつつ、こちらに有利な落とし所を探る",
+        "text": "掘り出し物を探す",
         "scores": {
           "black": 2,
           "blue": 1
@@ -674,7 +674,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "論点を分けて、何が食い違っているのかを順番に確認する",
+        "text": "価格や品質を比較して選ぶ",
         "scores": {
           "blue": 2,
           "black": 1
@@ -683,7 +683,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "本音をはっきり出して、自分が納得できる形まで押し切る",
+        "text": "気になるものにすぐ手を伸ばす",
         "scores": {
           "red": 2,
           "black": 1
@@ -692,7 +692,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "場の空気を荒らさないように、皆が収まりやすい形に寄せる",
+        "text": "人の様子を見ながら会場を回る",
         "scores": {
           "white": 2,
           "green": 2
@@ -704,7 +704,7 @@ export const questions = [
   {
     "id": "q014",
     "axis": "axis",
-    "groupId": "group_4",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -714,12 +714,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "新しい環境に入ったときの振る舞いは？",
+    "text": "友人から急に遊びに誘われたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "まずは実際に動きながら、その場のノリと勢いをつかむ",
+        "text": "その場の気分で即決する",
         "scores": {
           "red": 2,
           "black": 1
@@ -728,7 +728,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "誰が何を握っているかを見て、自分の立ち位置を確保する",
+        "text": "自分にとって得かどうか考える",
         "scores": {
           "black": 2,
           "red": 1
@@ -737,7 +737,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "空気や慣習を観察して、無理なく馴染める距離感を探る",
+        "text": "無理がないかを見て決める",
         "scores": {
           "green": 2,
           "red": 1
@@ -746,7 +746,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "既存の流れやルールを把握してから、慎重に合わせていく",
+        "text": "予定や条件を整理して判断する",
         "scores": {
           "white": 2,
           "blue": 2
@@ -758,7 +758,7 @@ export const questions = [
   {
     "id": "q015",
     "axis": "axis",
-    "groupId": "group_4",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -768,12 +768,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "ルールに対するあなたのスタンスは？",
+    "text": "朝起きたとき、最初にする行動は？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "必要なら従うが、窮屈なら自分の感覚を優先して破ることもある",
+        "text": "体調に合わせて動く",
         "scores": {
           "green": 2,
           "red": 1
@@ -782,7 +782,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "生きやすくなるなら利用するし、邪魔なら抜け道も探す",
+        "text": "やりたいことからすぐ始める",
         "scores": {
           "red": 2,
           "green": 1
@@ -791,7 +791,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "皆が安心して動けるなら、ある程度の決まりは必要だと思う",
+        "text": "決まったルーティンに従う",
         "scores": {
           "white": 2,
           "green": 1
@@ -800,7 +800,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "まず疑って構造を見直す。非合理なら従う理由はない",
+        "text": "予定や天気を確認する",
         "scores": {
           "blue": 2,
           "black": 2
@@ -812,7 +812,7 @@ export const questions = [
   {
     "id": "q016",
     "axis": "axis",
-    "groupId": "group_5",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -822,12 +822,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "重要な決断をするときの軸は？",
+    "text": "みんなで写真を撮ることになったとき、あなたはどうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "周囲との整合が取れていて、長く安定するかどうか",
+        "text": "全員が写るように位置やタイミングを調整する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -836,7 +836,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "情報を集めて比較し、最も納得できる見通しを選ぶ",
+        "text": "構図や光のバランスを考える",
         "scores": {
           "blue": 2,
           "white": 1
@@ -845,7 +845,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "無理がなく、自分や状況の流れに合っているかどうか",
+        "text": "撮影してくれる人に任せる",
         "scores": {
           "green": 2,
           "white": 1
@@ -854,7 +854,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "損得と欲しい結果を直視して、自分の意思で取りに行けるか",
+        "text": "自分がよく見える位置を取る",
         "scores": {
           "black": 2,
           "red": 2
@@ -866,7 +866,7 @@ export const questions = [
   {
     "id": "q017",
     "axis": "axis",
-    "groupId": "group_5",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -876,12 +876,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "他人から頼まれごとをされたときは？",
+    "text": "初めて使うアプリを触るとき、あなたはどうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "内容を整理して、できる範囲と優先順位を先に確認する",
+        "text": "機能や仕組みを一通り確認する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -890,7 +890,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら引き受けるが、全員が回る形になるよう条件を整える",
+        "text": "使い方のルールやマナーを意識する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -899,7 +899,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "見返りや今後の使い道も含めて、受ける価値があるか考える",
+        "text": "必要な部分だけ覚える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -908,7 +908,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "気分とタイミングが合えば乗るし、合わなければその場で断る",
+        "text": "とりあえず感覚で操作する",
         "scores": {
           "red": 2,
           "green": 2
@@ -920,7 +920,7 @@ export const questions = [
   {
     "id": "q018",
     "axis": "axis",
-    "groupId": "group_5",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -930,12 +930,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "長期目標に対する姿勢は？",
+    "text": "グループでタクシーに乗るとき、どう座る？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "途中で手段を調整しながらでも、現実的に達成できる形を詰める",
+        "text": "降りやすい位置を確保する",
         "scores": {
           "black": 2,
           "blue": 1
@@ -944,7 +944,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "理想像から逆算して、足りないものを順番に埋めていく",
+        "text": "配置や荷物の量を考えて座る",
         "scores": {
           "blue": 2,
           "black": 1
@@ -953,7 +953,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "欲しい結果のためなら、手段はかなり柔軟に切り替える",
+        "text": "その場のノリで座る",
         "scores": {
           "red": 2,
           "black": 1
@@ -962,7 +962,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "先を決めすぎず、その時々の熱や勢いで進路を変えていく",
+        "text": "空いている席に収まる",
         "scores": {
           "white": 2,
           "green": 2
@@ -974,7 +974,7 @@ export const questions = [
   {
     "id": "q019",
     "axis": "axis",
-    "groupId": "group_6",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -984,12 +984,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "集団の中で自然に取る役割は？",
+    "text": "新しいお店を見つけたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "空気を動かすきっかけを作り、停滞した場を前に進める",
+        "text": "気になったらすぐ入る",
         "scores": {
           "red": 2,
           "black": 1
@@ -998,7 +998,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら主導権を握り、結果が出る形に人を動かす",
+        "text": "評判を気にする",
         "scores": {
           "black": 2,
           "red": 1
@@ -1007,7 +1007,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "全体の流れを見ながら、無理のない配置や助け合いを整える",
+        "text": "雰囲気が合えば入る",
         "scores": {
           "green": 2,
           "red": 1
@@ -1016,7 +1016,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "表に立つより、仕組みや連携を整えて場を安定させる",
+        "text": "情報を調べてから判断する",
         "scores": {
           "white": 2,
           "blue": 2
@@ -1028,7 +1028,7 @@ export const questions = [
   {
     "id": "q020",
     "axis": "axis",
-    "groupId": "group_6",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -1038,12 +1038,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "突発的なチャンスが来たときの判断は？",
+    "text": "季節の変わり目を感じたとき、どう過ごす？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "今の流れや自分の感覚に合うなら、まず掴んでみる",
+        "text": "生活リズムの変化を感じて動く",
         "scores": {
           "green": 2,
           "red": 1
@@ -1052,7 +1052,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "面白いと思えば多少荒くても飛び込んでから考える",
+        "text": "気分に合わせて行動を変える",
         "scores": {
           "red": 2,
           "green": 1
@@ -1061,7 +1061,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "周囲や土台との相性を見て、無理のない形で乗れるか確かめる",
+        "text": "体調管理や習慣を整える",
         "scores": {
           "white": 2,
           "green": 1
@@ -1070,7 +1070,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "条件と再現性を見て、罠でないと判断できた時だけ動く",
+        "text": "原因や変化を分析する",
         "scores": {
           "blue": 2,
           "black": 2
@@ -1082,7 +1082,7 @@ export const questions = [
   {
     "id": "q021",
     "axis": "axis",
-    "groupId": "group_6",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -1092,12 +1092,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "チームで動くとき、まず整えるべきものは？",
+    "text": "初対面の相手と関係を築くとき、最初に意識することは何？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "全員が納得できる進め方と役割分担を先に固める",
+        "text": "礼儀やマナーを守る",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1106,7 +1106,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "混乱しないように手順と判断基準を整理して共有する",
+        "text": "相手の考え方を把握する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1115,7 +1115,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "それぞれの得意なやり方を見て、無理のない形に合わせる",
+        "text": "自然体で接する",
         "scores": {
           "green": 2,
           "white": 1
@@ -1124,7 +1124,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "全体よりも自分が動きやすく得をする立ち回りを優先する",
+        "text": "交渉の主導権を取る",
         "scores": {
           "black": 2,
           "red": 2
@@ -1136,7 +1136,7 @@ export const questions = [
   {
     "id": "q022",
     "axis": "axis",
-    "groupId": "group_7",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -1146,12 +1146,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "予想外の問題が起きたとき、最初に取る行動は？",
+    "text": "会話中に知らない話題が出たとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "原因と影響範囲を切り分けて、落ち着いて対処順を決める",
+        "text": "内容を整理して理解しようとする",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1160,7 +1160,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "被害が広がらないように最低限のルールと連絡網を整える",
+        "text": "相手に合わせて話を続ける",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1169,7 +1169,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "使える手段を見極めて、自分に有利な突破口を探す",
+        "text": "自分に関係ある部分だけ拾う",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1178,7 +1178,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "細かく考え込まず、その場の感覚で素早く動いて流れに乗る",
+        "text": "ノリで話を広げる",
         "scores": {
           "red": 2,
           "green": 2
@@ -1190,7 +1190,7 @@ export const questions = [
   {
     "id": "q023",
     "axis": "axis",
-    "groupId": "group_7",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -1200,12 +1200,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "他人と意見がぶつかったときの対応は？",
+    "text": "限定品が少数しかないと知ったとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "相手の狙いを整理しつつ、こちらに有利な落とし所を探る",
+        "text": "自分が多く手に入れるための手段を考える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1214,7 +1214,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "論点を分けて、何が食い違っているのかを順番に確認する",
+        "text": "入手確率や方法を考える",
         "scores": {
           "blue": 2,
           "black": 1
@@ -1223,7 +1223,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "本音をはっきり出して、自分が納得できる形まで押し切る",
+        "text": "勢いで取りに行く",
         "scores": {
           "red": 2,
           "black": 1
@@ -1232,7 +1232,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "場の空気を荒らさないように、皆が収まりやすい形に寄せる",
+        "text": "必要な人の手に回るのを見守る",
         "scores": {
           "white": 2,
           "green": 2
@@ -1244,7 +1244,7 @@ export const questions = [
   {
     "id": "q024",
     "axis": "axis",
-    "groupId": "group_7",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -1254,12 +1254,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "新しい環境に入ったときの振る舞いは？",
+    "text": "気になる商品を見つけたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "まずは実際に動きながら、その場のノリと勢いをつかむ",
+        "text": "直感で欲しいと思ったら買う",
         "scores": {
           "red": 2,
           "black": 1
@@ -1268,7 +1268,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "誰が何を握っているかを見て、自分の立ち位置を確保する",
+        "text": "価格や価値を見て買うか判断する",
         "scores": {
           "black": 2,
           "red": 1
@@ -1277,7 +1277,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "空気や慣習を観察して、無理なく馴染める距離感を探る",
+        "text": "必要かどうかで購入を決める",
         "scores": {
           "green": 2,
           "red": 1
@@ -1286,7 +1286,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "既存の流れやルールを把握してから、慎重に合わせていく",
+        "text": "比較や検討をしてから購入を決める",
         "scores": {
           "white": 2,
           "blue": 2
@@ -1298,7 +1298,7 @@ export const questions = [
   {
     "id": "q025",
     "axis": "axis",
-    "groupId": "group_8",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -1308,12 +1308,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "ルールに対するあなたのスタンスは？",
+    "text": "長く続けている習慣についてどう考える？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "必要なら従うが、窮屈なら自分の感覚を優先して破ることもある",
+        "text": "続いていること自体に価値がある",
         "scores": {
           "green": 2,
           "red": 1
@@ -1322,7 +1322,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "生きやすくなるなら利用するし、邪魔なら抜け道も探す",
+        "text": "飽きたらやめる",
         "scores": {
           "red": 2,
           "green": 1
@@ -1331,7 +1331,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "皆が安心して動けるなら、ある程度の決まりは必要だと思う",
+        "text": "必要なら維持する",
         "scores": {
           "white": 2,
           "green": 1
@@ -1340,7 +1340,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "まず疑って構造を見直す。非合理なら従う理由はない",
+        "text": "効率が悪いと思ったら変える",
         "scores": {
           "blue": 2,
           "black": 2
@@ -1352,7 +1352,7 @@ export const questions = [
   {
     "id": "q026",
     "axis": "axis",
-    "groupId": "group_8",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -1362,12 +1362,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "重要な決断をするときの軸は？",
+    "text": "チームの成果が評価された！あなたは…",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "周囲との整合が取れていて、長く安定するかどうか",
+        "text": "規定どおりに功績を配分する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1376,7 +1376,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "情報を集めて比較し、最も納得できる見通しを選ぶ",
+        "text": "それぞれの実績に基づいて評価する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1385,7 +1385,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "無理がなく、自分や状況の流れに合っているかどうか",
+        "text": "皆の努力を尊重する",
         "scores": {
           "green": 2,
           "white": 1
@@ -1394,7 +1394,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "損得と欲しい結果を直視して、自分の意思で取りに行けるか",
+        "text": "自分の貢献を強く主張する",
         "scores": {
           "black": 2,
           "red": 2
@@ -1406,7 +1406,7 @@ export const questions = [
   {
     "id": "q027",
     "axis": "axis",
-    "groupId": "group_8",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -1416,12 +1416,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "他人から頼まれごとをされたときは？",
+    "text": "新しい料理を作るとき、どう進める？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "内容を整理して、できる範囲と優先順位を先に確認する",
+        "text": "レシピの手順や分量を正確に確認してから作る",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1430,7 +1430,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら引き受けるが、全員が回る形になるよう条件を整える",
+        "text": "基本の手順を守りつつ進める",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1439,7 +1439,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "見返りや今後の使い道も含めて、受ける価値があるか考える",
+        "text": "手持ちだけで作れるように調整する",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1448,7 +1448,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "気分とタイミングが合えば乗るし、合わなければその場で断る",
+        "text": "感覚で味見しながら作る",
         "scores": {
           "red": 2,
           "green": 2
@@ -1460,7 +1460,7 @@ export const questions = [
   {
     "id": "q028",
     "axis": "axis",
-    "groupId": "group_9",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -1470,12 +1470,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "長期目標に対する姿勢は？",
+    "text": "大皿の料理に最後の一つが残ったとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "途中で手段を調整しながらでも、現実的に達成できる形を詰める",
+        "text": "自分が取るかどうかを素早く判断する",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1484,7 +1484,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "理想像から逆算して、足りないものを順番に埋めていく",
+        "text": "誰が一番食べるべきか考える",
         "scores": {
           "blue": 2,
           "black": 1
@@ -1493,7 +1493,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "欲しい結果のためなら、手段はかなり柔軟に切り替える",
+        "text": "食べたいならそのまま取る",
         "scores": {
           "red": 2,
           "black": 1
@@ -1502,7 +1502,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "先を決めすぎず、その時々の熱や勢いで進路を変えていく",
+        "text": "他の人に譲る",
         "scores": {
           "white": 2,
           "green": 2
@@ -1514,7 +1514,7 @@ export const questions = [
   {
     "id": "q029",
     "axis": "axis",
-    "groupId": "group_9",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -1524,12 +1524,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "集団の中で自然に取る役割は？",
+    "text": "会話中に面白いことを思いついたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "空気を動かすきっかけを作り、停滞した場を前に進める",
+        "text": "すぐに口に出す",
         "scores": {
           "red": 2,
           "black": 1
@@ -1538,7 +1538,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら主導権を握り、結果が出る形に人を動かす",
+        "text": "場にとって得か考える",
         "scores": {
           "black": 2,
           "red": 1
@@ -1547,7 +1547,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "全体の流れを見ながら、無理のない配置や助け合いを整える",
+        "text": "自然な流れで話題に出す",
         "scores": {
           "green": 2,
           "red": 1
@@ -1556,7 +1556,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "表に立つより、仕組みや連携を整えて場を安定させる",
+        "text": "タイミングや内容を整理する",
         "scores": {
           "white": 2,
           "blue": 2
@@ -1568,7 +1568,7 @@ export const questions = [
   {
     "id": "q030",
     "axis": "axis",
-    "groupId": "group_9",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -1578,12 +1578,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "突発的なチャンスが来たときの判断は？",
+    "text": "部屋でくつろぐとき、どんな過ごし方をする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "今の流れや自分の感覚に合うなら、まず掴んでみる",
+        "text": "ただ何もせずごろごろする",
         "scores": {
           "green": 2,
           "red": 1
@@ -1592,7 +1592,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "面白いと思えば多少荒くても飛び込んでから考える",
+        "text": "好きなことをする",
         "scores": {
           "red": 2,
           "green": 1
@@ -1601,7 +1601,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "周囲や土台との相性を見て、無理のない形で乗れるか確かめる",
+        "text": "掃除を始める",
         "scores": {
           "white": 2,
           "green": 1
@@ -1610,7 +1610,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "条件と再現性を見て、罠でないと判断できた時だけ動く",
+        "text": "有意義に使えるよう工夫する",
         "scores": {
           "blue": 2,
           "black": 2
@@ -1622,7 +1622,7 @@ export const questions = [
   {
     "id": "q031",
     "axis": "axis",
-    "groupId": "group_10",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -1632,12 +1632,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "チームで動くとき、まず整えるべきものは？",
+    "text": "新しいルールを導入するとき、大事なものは？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "全員が納得できる進め方と役割分担を先に固める",
+        "text": "公平に運用できるか",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1646,7 +1646,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "混乱しないように手順と判断基準を整理して共有する",
+        "text": "ルールの適用に効果があるか",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1655,7 +1655,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "それぞれの得意なやり方を見て、無理のない形に合わせる",
+        "text": "みんなが無理なく過ごせるか",
         "scores": {
           "green": 2,
           "white": 1
@@ -1664,7 +1664,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "全体よりも自分が動きやすく得をする立ち回りを優先する",
+        "text": "自分にとって有利か",
         "scores": {
           "black": 2,
           "red": 2
@@ -1676,7 +1676,7 @@ export const questions = [
   {
     "id": "q032",
     "axis": "axis",
-    "groupId": "group_10",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -1686,12 +1686,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "予想外の問題が起きたとき、最初に取る行動は？",
+    "text": "何かを比較して選ぶとき、どう判断する？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "原因と影響範囲を切り分けて、落ち着いて対処順を決める",
+        "text": "条件を整理して最も合理的なものを選ぶ",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1700,7 +1700,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "被害が広がらないように最低限のルールと連絡網を整える",
+        "text": "基準を決めて公平に選ぶ",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1709,7 +1709,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "使える手段を見極めて、自分に有利な突破口を探す",
+        "text": "自分にとって得かどうかで決める",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1718,7 +1718,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "細かく考え込まず、その場の感覚で素早く動いて流れに乗る",
+        "text": "なんとなく良さそうな方を選ぶ",
         "scores": {
           "red": 2,
           "green": 2
@@ -1730,7 +1730,7 @@ export const questions = [
   {
     "id": "q033",
     "axis": "axis",
-    "groupId": "group_10",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -1740,12 +1740,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "他人と意見がぶつかったときの対応は？",
+    "text": "予定が重なったとき、どう決める？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "相手の狙いを整理しつつ、こちらに有利な落とし所を探る",
+        "text": "自分にとって価値が高い方を選ぶ",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1754,7 +1754,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "論点を分けて、何が食い違っているのかを順番に確認する",
+        "text": "条件や結果を比較する",
         "scores": {
           "blue": 2,
           "black": 1
@@ -1763,7 +1763,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "本音をはっきり出して、自分が納得できる形まで押し切る",
+        "text": "気分で決める",
         "scores": {
           "red": 2,
           "black": 1
@@ -1772,7 +1772,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "場の空気を荒らさないように、皆が収まりやすい形に寄せる",
+        "text": "先に決まっていた方を優先する",
         "scores": {
           "white": 2,
           "green": 2
@@ -1784,7 +1784,7 @@ export const questions = [
   {
     "id": "q034",
     "axis": "axis",
-    "groupId": "group_11",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -1794,12 +1794,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "新しい環境に入ったときの振る舞いは？",
+    "text": "突然予定が空いたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "まずは実際に動きながら、その場のノリと勢いをつかむ",
+        "text": "その場でやりたいことを始める",
         "scores": {
           "red": 2,
           "black": 1
@@ -1808,7 +1808,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "誰が何を握っているかを見て、自分の立ち位置を確保する",
+        "text": "有効に使えることを探す",
         "scores": {
           "black": 2,
           "red": 1
@@ -1817,7 +1817,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "空気や慣習を観察して、無理なく馴染める距離感を探る",
+        "text": "のんびりする",
         "scores": {
           "green": 2,
           "red": 1
@@ -1826,7 +1826,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "既存の流れやルールを把握してから、慎重に合わせていく",
+        "text": "計画を立てて動く",
         "scores": {
           "white": 2,
           "blue": 2
@@ -1838,7 +1838,7 @@ export const questions = [
   {
     "id": "q035",
     "axis": "axis",
-    "groupId": "group_11",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -1848,12 +1848,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "ルールに対するあなたのスタンスは？",
+    "text": "植物やペットの世話をするときの感覚は？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "必要なら従うが、窮屈なら自分の感覚を優先して破ることもある",
+        "text": "変化を見守りながら世話をする",
         "scores": {
           "green": 2,
           "red": 1
@@ -1862,7 +1862,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "生きやすくなるなら利用するし、邪魔なら抜け道も探す",
+        "text": "触れ合いを楽しむ",
         "scores": {
           "red": 2,
           "green": 1
@@ -1871,7 +1871,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "皆が安心して動けるなら、ある程度の決まりは必要だと思う",
+        "text": "決まった手順や食事時間を守る",
         "scores": {
           "white": 2,
           "green": 1
@@ -1880,7 +1880,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "まず疑って構造を見直す。非合理なら従う理由はない",
+        "text": "効率よく管理する",
         "scores": {
           "blue": 2,
           "black": 2
@@ -1892,7 +1892,7 @@ export const questions = [
   {
     "id": "q036",
     "axis": "axis",
-    "groupId": "group_11",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -1902,12 +1902,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "重要な決断をするときの軸は？",
+    "text": "意見の強い人が場を乱しているとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "周囲との整合が取れていて、長く安定するかどうか",
+        "text": "ルールに基づいて発言を整理する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1916,7 +1916,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "情報を集めて比較し、最も納得できる見通しを選ぶ",
+        "text": "論点を分解して議論を整える",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1925,7 +1925,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "無理がなく、自分や状況の流れに合っているかどうか",
+        "text": "落ち着くのを待つ",
         "scores": {
           "green": 2,
           "white": 1
@@ -1934,7 +1934,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "損得と欲しい結果を直視して、自分の意思で取りに行けるか",
+        "text": "利用できる部分だけ取り入れる",
         "scores": {
           "black": 2,
           "red": 2
@@ -1946,7 +1946,7 @@ export const questions = [
   {
     "id": "q037",
     "axis": "axis",
-    "groupId": "group_12",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -1956,12 +1956,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "他人から頼まれごとをされたときは？",
+    "text": "会話で意見が食い違ったとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "内容を整理して、できる範囲と優先順位を先に確認する",
+        "text": "論点を整理してすり合わせる",
         "scores": {
           "blue": 2,
           "white": 1
@@ -1970,7 +1970,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら引き受けるが、全員が回る形になるよう条件を整える",
+        "text": "場の秩序を保つように調整する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -1979,7 +1979,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "見返りや今後の使い道も含めて、受ける価値があるか考える",
+        "text": "有利な方向に話を進める",
         "scores": {
           "black": 2,
           "blue": 1
@@ -1988,7 +1988,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "気分とタイミングが合えば乗るし、合わなければその場で断る",
+        "text": "雰囲気で流す",
         "scores": {
           "red": 2,
           "green": 2
@@ -2000,7 +2000,7 @@ export const questions = [
   {
     "id": "q038",
     "axis": "axis",
-    "groupId": "group_12",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -2010,12 +2010,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "長期目標に対する姿勢は？",
+    "text": "誰かに頼みごとをされたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "途中で手段を調整しながらでも、現実的に達成できる形を詰める",
+        "text": "見返りやメリットを考えてから返事をする",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2024,7 +2024,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "理想像から逆算して、足りないものを順番に埋めていく",
+        "text": "内容の妥当性を考える",
         "scores": {
           "blue": 2,
           "black": 1
@@ -2033,7 +2033,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "欲しい結果のためなら、手段はかなり柔軟に切り替える",
+        "text": "気分で引き受ける",
         "scores": {
           "red": 2,
           "black": 1
@@ -2042,7 +2042,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "先を決めすぎず、その時々の熱や勢いで進路を変えていく",
+        "text": "その人との関係性を考えて引き受ける",
         "scores": {
           "white": 2,
           "green": 2
@@ -2054,7 +2054,7 @@ export const questions = [
   {
     "id": "q039",
     "axis": "axis",
-    "groupId": "group_12",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -2064,12 +2064,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "集団の中で自然に取る役割は？",
+    "text": "興味のあることを見つけたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "空気を動かすきっかけを作り、停滞した場を前に進める",
+        "text": "とりあえずやってみる",
         "scores": {
           "red": 2,
           "black": 1
@@ -2078,7 +2078,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら主導権を握り、結果が出る形に人を動かす",
+        "text": "利益や成果につながるか考える",
         "scores": {
           "black": 2,
           "red": 1
@@ -2087,7 +2087,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "全体の流れを見ながら、無理のない配置や助け合いを整える",
+        "text": "自分に合っているか様子を見る",
         "scores": {
           "green": 2,
           "red": 1
@@ -2096,7 +2096,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "表に立つより、仕組みや連携を整えて場を安定させる",
+        "text": "情報を集めてから判断する",
         "scores": {
           "white": 2,
           "blue": 2
@@ -2108,7 +2108,7 @@ export const questions = [
   {
     "id": "q040",
     "axis": "axis",
-    "groupId": "group_13",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -2118,12 +2118,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "突発的なチャンスが来たときの判断は？",
+    "text": "体調が少し悪いとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "今の流れや自分の感覚に合うなら、まず掴んでみる",
+        "text": "回復するのをただ待つ",
         "scores": {
           "green": 2,
           "red": 1
@@ -2132,7 +2132,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "面白いと思えば多少荒くても飛び込んでから考える",
+        "text": "気分転換で紛らわせる",
         "scores": {
           "red": 2,
           "green": 1
@@ -2141,7 +2141,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "周囲や土台との相性を見て、無理のない形で乗れるか確かめる",
+        "text": "生活リズムを整える",
         "scores": {
           "white": 2,
           "green": 1
@@ -2150,7 +2150,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "条件と再現性を見て、罠でないと判断できた時だけ動く",
+        "text": "原因を調べて対処する",
         "scores": {
           "blue": 2,
           "black": 2
@@ -2162,7 +2162,7 @@ export const questions = [
   {
     "id": "q041",
     "axis": "axis",
-    "groupId": "group_13",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -2172,12 +2172,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "チームで動くとき、まず整えるべきものは？",
+    "text": "ボランティア活動に参加する動機として近いものは？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "全員が納得できる進め方と役割分担を先に固める",
+        "text": "社会的な責任を果たすため",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2186,7 +2186,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "混乱しないように手順と判断基準を整理して共有する",
+        "text": "課題を理解するため",
         "scores": {
           "blue": 2,
           "white": 1
@@ -2195,7 +2195,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "それぞれの得意なやり方を見て、無理のない形に合わせる",
+        "text": "お互いの助け合いとして",
         "scores": {
           "green": 2,
           "white": 1
@@ -2204,7 +2204,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "全体よりも自分が動きやすく得をする立ち回りを優先する",
+        "text": "見返りや評価を得るため",
         "scores": {
           "black": 2,
           "red": 2
@@ -2216,7 +2216,7 @@ export const questions = [
   {
     "id": "q042",
     "axis": "axis",
-    "groupId": "group_13",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -2226,12 +2226,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "予想外の問題が起きたとき、最初に取る行動は？",
+    "text": "何かを覚えるときの方法は？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "原因と影響範囲を切り分けて、落ち着いて対処順を決める",
+        "text": "仕組みや理由から理解する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -2240,7 +2240,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "被害が広がらないように最低限のルールと連絡網を整える",
+        "text": "決められたやり方で繰り返す",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2249,7 +2249,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "使える手段を見極めて、自分に有利な突破口を探す",
+        "text": "必要な部分だけ覚える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2258,7 +2258,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "細かく考え込まず、その場の感覚で素早く動いて流れに乗る",
+        "text": "体感で覚える",
         "scores": {
           "red": 2,
           "green": 2
@@ -2270,7 +2270,7 @@ export const questions = [
   {
     "id": "q043",
     "axis": "axis",
-    "groupId": "group_14",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -2280,12 +2280,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "他人と意見がぶつかったときの対応は？",
+    "text": "他人の成功を見たとき、どう考える？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "相手の狙いを整理しつつ、こちらに有利な落とし所を探る",
+        "text": "自分にどう活かせるか考える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2294,7 +2294,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "論点を分けて、何が食い違っているのかを順番に確認する",
+        "text": "成功の要因を分析する",
         "scores": {
           "blue": 2,
           "black": 1
@@ -2303,7 +2303,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "本音をはっきり出して、自分が納得できる形まで押し切る",
+        "text": "刺激を受けて行動する",
         "scores": {
           "red": 2,
           "black": 1
@@ -2312,7 +2312,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "場の空気を荒らさないように、皆が収まりやすい形に寄せる",
+        "text": "その人の流れとして受け入れる",
         "scores": {
           "white": 2,
           "green": 2
@@ -2324,7 +2324,7 @@ export const questions = [
   {
     "id": "q044",
     "axis": "axis",
-    "groupId": "group_14",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -2334,12 +2334,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "新しい環境に入ったときの振る舞いは？",
+    "text": "誰かと意見がぶつかったとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "まずは実際に動きながら、その場のノリと勢いをつかむ",
+        "text": "感情をそのまま伝える",
         "scores": {
           "red": 2,
           "black": 1
@@ -2348,7 +2348,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "誰が何を握っているかを見て、自分の立ち位置を確保する",
+        "text": "有利な方向に持っていく",
         "scores": {
           "black": 2,
           "red": 1
@@ -2357,7 +2357,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "空気や慣習を観察して、無理なく馴染める距離感を探る",
+        "text": "無理に争わず流す",
         "scores": {
           "green": 2,
           "red": 1
@@ -2366,7 +2366,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "既存の流れやルールを把握してから、慎重に合わせていく",
+        "text": "論理的に整理して話す",
         "scores": {
           "white": 2,
           "blue": 2
@@ -2378,7 +2378,7 @@ export const questions = [
   {
     "id": "q045",
     "axis": "axis",
-    "groupId": "group_14",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -2388,12 +2388,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "ルールに対するあなたのスタンスは？",
+    "text": "人のペースについてどう考える？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "必要なら従うが、窮屈なら自分の感覚を優先して破ることもある",
+        "text": "それぞれに合った速度があると思う",
         "scores": {
           "green": 2,
           "red": 1
@@ -2402,7 +2402,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "生きやすくなるなら利用するし、邪魔なら抜け道も探す",
+        "text": "速い方がいいと感じる",
         "scores": {
           "red": 2,
           "green": 1
@@ -2411,7 +2411,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "皆が安心して動けるなら、ある程度の決まりは必要だと思う",
+        "text": "周囲と合わせるべきだと思う",
         "scores": {
           "white": 2,
           "green": 1
@@ -2420,7 +2420,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "まず疑って構造を見直す。非合理なら従う理由はない",
+        "text": "最適なやり方があると思う",
         "scores": {
           "blue": 2,
           "black": 2
@@ -2432,7 +2432,7 @@ export const questions = [
   {
     "id": "q046",
     "axis": "axis",
-    "groupId": "group_15",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -2442,12 +2442,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "重要な決断をするときの軸は？",
+    "text": "旅行先で自由時間になったとき、あなたはどうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "周囲との整合が取れていて、長く安定するかどうか",
+        "text": "集合時間を意識して行動する",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2456,7 +2456,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "情報を集めて比較し、最も納得できる見通しを選ぶ",
+        "text": "見どころを調べて効率よく回る",
         "scores": {
           "blue": 2,
           "white": 1
@@ -2465,7 +2465,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "無理がなく、自分や状況の流れに合っているかどうか",
+        "text": "気の向くままに歩いて楽しむ",
         "scores": {
           "green": 2,
           "white": 1
@@ -2474,7 +2474,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "損得と欲しい結果を直視して、自分の意思で取りに行けるか",
+        "text": "自分の欲しいものを優先して買い物する",
         "scores": {
           "black": 2,
           "red": 2
@@ -2486,7 +2486,7 @@ export const questions = [
   {
     "id": "q047",
     "axis": "axis",
-    "groupId": "group_15",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -2496,12 +2496,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "他人から頼まれごとをされたときは？",
+    "text": "判断に迷ったとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "内容を整理して、できる範囲と優先順位を先に確認する",
+        "text": "情報を集めて結論を導く",
         "scores": {
           "blue": 2,
           "white": 1
@@ -2510,7 +2510,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら引き受けるが、全員が回る形になるよう条件を整える",
+        "text": "基準やルールに従う",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2519,7 +2519,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "見返りや今後の使い道も含めて、受ける価値があるか考える",
+        "text": "損得で決める",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2528,7 +2528,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "気分とタイミングが合えば乗るし、合わなければその場で断る",
+        "text": "直感で決める",
         "scores": {
           "red": 2,
           "green": 2
@@ -2540,7 +2540,7 @@ export const questions = [
   {
     "id": "q048",
     "axis": "axis",
-    "groupId": "group_15",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -2550,12 +2550,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "長期目標に対する姿勢は？",
+    "text": "話題が自分に不利な方向に進んだとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "途中で手段を調整しながらでも、現実的に達成できる形を詰める",
+        "text": "話の流れを変えるか離脱する",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2564,7 +2564,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "理想像から逆算して、足りないものを順番に埋めていく",
+        "text": "論点を整理して軌道修正する",
         "scores": {
           "blue": 2,
           "black": 1
@@ -2573,7 +2573,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "欲しい結果のためなら、手段はかなり柔軟に切り替える",
+        "text": "その場の勢いで押し返す",
         "scores": {
           "red": 2,
           "black": 1
@@ -2582,7 +2582,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "先を決めすぎず、その時々の熱や勢いで進路を変えていく",
+        "text": "話の流れに任せて受け入れる",
         "scores": {
           "white": 2,
           "green": 2
@@ -2594,7 +2594,7 @@ export const questions = [
   {
     "id": "q049",
     "axis": "axis",
-    "groupId": "group_16",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -2604,12 +2604,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "集団の中で自然に取る役割は？",
+    "text": "新しい趣味を見つけたとき、どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "空気を動かすきっかけを作り、停滞した場を前に進める",
+        "text": "思いついたらすぐ始める",
         "scores": {
           "red": 2,
           "black": 1
@@ -2618,7 +2618,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら主導権を握り、結果が出る形に人を動かす",
+        "text": "価値があるか見極める",
         "scores": {
           "black": 2,
           "red": 1
@@ -2627,7 +2627,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "全体の流れを見ながら、無理のない配置や助け合いを整える",
+        "text": "自分に続けられるか考える",
         "scores": {
           "green": 2,
           "red": 1
@@ -2636,7 +2636,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "表に立つより、仕組みや連携を整えて場を安定させる",
+        "text": "調べて準備してから始める",
         "scores": {
           "white": 2,
           "blue": 2
@@ -2648,7 +2648,7 @@ export const questions = [
   {
     "id": "q050",
     "axis": "axis",
-    "groupId": "group_16",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -2658,12 +2658,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "突発的なチャンスが来たときの判断は？",
+    "text": "靴を脱いだあと、どうすることが多い？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "今の流れや自分の感覚に合うなら、まず掴んでみる",
+        "text": "特に意識せず適当な位置に置く",
         "scores": {
           "green": 2,
           "red": 1
@@ -2672,7 +2672,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "面白いと思えば多少荒くても飛び込んでから考える",
+        "text": "脱ぎ捨てる",
         "scores": {
           "red": 2,
           "green": 1
@@ -2681,7 +2681,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "周囲や土台との相性を見て、無理のない形で乗れるか確かめる",
+        "text": "きちんと揃える",
         "scores": {
           "white": 2,
           "green": 1
@@ -2690,7 +2690,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "条件と再現性を見て、罠でないと判断できた時だけ動く",
+        "text": "すぐ帰れる位置に置く",
         "scores": {
           "blue": 2,
           "black": 2
@@ -2702,7 +2702,7 @@ export const questions = [
   {
     "id": "q051",
     "axis": "axis",
-    "groupId": "group_16",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -2712,12 +2712,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "チームで動くとき、まず整えるべきものは？",
+    "text": "委員会決めの時間、あなたはどこに入る？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "全員が納得できる進め方と役割分担を先に固める",
+        "text": "必要とされている役割や人手が足りないところに入る",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2726,7 +2726,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "混乱しないように手順と判断基準を整理して共有する",
+        "text": "自分の得意分野や適性を考えて選ぶ",
         "scores": {
           "blue": 2,
           "white": 1
@@ -2735,7 +2735,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "それぞれの得意なやり方を見て、無理のない形に合わせる",
+        "text": "1年間続けられそうなところを選ぶ",
         "scores": {
           "green": 2,
           "white": 1
@@ -2744,7 +2744,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "全体よりも自分が動きやすく得をする立ち回りを優先する",
+        "text": "楽そう、または得になりそうなところを選ぶ",
         "scores": {
           "black": 2,
           "red": 2
@@ -2756,7 +2756,7 @@ export const questions = [
   {
     "id": "q052",
     "axis": "axis",
-    "groupId": "group_17",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -2766,12 +2766,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "予想外の問題が起きたとき、最初に取る行動は？",
+    "text": "計画を立てるとき、何を重視する？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "原因と影響範囲を切り分けて、落ち着いて対処順を決める",
+        "text": "予測可能で再現性のある手順",
         "scores": {
           "blue": 2,
           "white": 1
@@ -2780,7 +2780,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "被害が広がらないように最低限のルールと連絡網を整える",
+        "text": "ルールに沿っていること",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2789,7 +2789,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "使える手段を見極めて、自分に有利な突破口を探す",
+        "text": "自分にメリットがあること",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2798,7 +2798,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "細かく考え込まず、その場の感覚で素早く動いて流れに乗る",
+        "text": "柔軟に変えられること",
         "scores": {
           "red": 2,
           "green": 2
@@ -2810,7 +2810,7 @@ export const questions = [
   {
     "id": "q053",
     "axis": "axis",
-    "groupId": "group_17",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -2820,12 +2820,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "他人と意見がぶつかったときの対応は？",
+    "text": "行列に並んでいるとき、どう過ごす？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "相手の狙いを整理しつつ、こちらに有利な落とし所を探る",
+        "text": "他により短時間で入れる良い場所がないか考える",
         "scores": {
           "black": 2,
           "blue": 1
@@ -2834,7 +2834,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "論点を分けて、何が食い違っているのかを順番に確認する",
+        "text": "待ち時間の長さや進み方を観察する",
         "scores": {
           "blue": 2,
           "black": 1
@@ -2843,7 +2843,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "本音をはっきり出して、自分が納得できる形まで押し切る",
+        "text": "暇つぶしで好きなことをする",
         "scores": {
           "red": 2,
           "black": 1
@@ -2852,7 +2852,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "場の空気を荒らさないように、皆が収まりやすい形に寄せる",
+        "text": "そのまま待つ",
         "scores": {
           "white": 2,
           "green": 2
@@ -2864,7 +2864,7 @@ export const questions = [
   {
     "id": "q054",
     "axis": "axis",
-    "groupId": "group_17",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -2874,12 +2874,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "新しい環境に入ったときの振る舞いは？",
+    "text": "イベントに参加したとき、どう動く？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "まずは実際に動きながら、その場のノリと勢いをつかむ",
+        "text": "楽しそうな場所にすぐ向かう",
         "scores": {
           "red": 2,
           "black": 1
@@ -2888,7 +2888,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "誰が何を握っているかを見て、自分の立ち位置を確保する",
+        "text": "得られるものを考えて動く",
         "scores": {
           "black": 2,
           "red": 1
@@ -2897,7 +2897,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "空気や慣習を観察して、無理なく馴染める距離感を探る",
+        "text": "流れに乗って過ごす",
         "scores": {
           "green": 2,
           "red": 1
@@ -2906,7 +2906,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "既存の流れやルールを把握してから、慎重に合わせていく",
+        "text": "全体を見て計画的に回る",
         "scores": {
           "white": 2,
           "blue": 2
@@ -2918,7 +2918,7 @@ export const questions = [
   {
     "id": "q055",
     "axis": "axis",
-    "groupId": "group_18",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -2928,12 +2928,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "ルールに対するあなたのスタンスは？",
+    "text": "道を歩いていて少し遠回りになったとき、どう感じる？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "必要なら従うが、窮屈なら自分の感覚を優先して破ることもある",
+        "text": "それも流れとして受け入れる",
         "scores": {
           "green": 2,
           "red": 1
@@ -2942,7 +2942,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "生きやすくなるなら利用するし、邪魔なら抜け道も探す",
+        "text": "早く目的地に着きたいので走る",
         "scores": {
           "red": 2,
           "green": 1
@@ -2951,7 +2951,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "皆が安心して動けるなら、ある程度の決まりは必要だと思う",
+        "text": "本来のルートに戻ろうとする",
         "scores": {
           "white": 2,
           "green": 1
@@ -2960,7 +2960,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "まず疑って構造を見直す。非合理なら従う理由はない",
+        "text": "より効率のいい道を考える",
         "scores": {
           "blue": 2,
           "black": 2
@@ -2972,7 +2972,7 @@ export const questions = [
   {
     "id": "q056",
     "axis": "axis",
-    "groupId": "group_18",
+    "groupId": "group_white",
     "primaryColor": "white",
     "friendlyColors": [
       "blue",
@@ -2982,12 +2982,12 @@ export const questions = [
       "black",
       "red"
     ],
-    "text": "重要な決断をするときの軸は？",
+    "text": "みんなで鍋を食べることになったとき、あなたは何をする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "周囲との整合が取れていて、長く安定するかどうか",
+        "text": "取り分けや火加減を見て、全員が快適に食べられるようにする",
         "scores": {
           "white": 2,
           "blue": 1
@@ -2996,7 +2996,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "情報を集めて比較し、最も納得できる見通しを選ぶ",
+        "text": "具材のバランスや順番を考えて進行を調整する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -3005,7 +3005,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "無理がなく、自分や状況の流れに合っているかどうか",
+        "text": "自分のペースで食べつつ、無理のない範囲で手伝う",
         "scores": {
           "green": 2,
           "white": 1
@@ -3014,7 +3014,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "損得と欲しい結果を直視して、自分の意思で取りに行けるか",
+        "text": "好きな具材を優先して確保する",
         "scores": {
           "black": 2,
           "red": 2
@@ -3026,7 +3026,7 @@ export const questions = [
   {
     "id": "q057",
     "axis": "axis",
-    "groupId": "group_18",
+    "groupId": "group_blue",
     "primaryColor": "blue",
     "friendlyColors": [
       "white",
@@ -3036,12 +3036,12 @@ export const questions = [
       "red",
       "green"
     ],
-    "text": "他人から頼まれごとをされたときは？",
+    "text": "道に迷ったとき、どう対処する？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "内容を整理して、できる範囲と優先順位を先に確認する",
+        "text": "地図や情報を見て現在地とルートを整理する",
         "scores": {
           "blue": 2,
           "white": 1
@@ -3050,7 +3050,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら引き受けるが、全員が回る形になるよう条件を整える",
+        "text": "案内表示やルールに従って進む",
         "scores": {
           "white": 2,
           "blue": 1
@@ -3059,7 +3059,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "見返りや今後の使い道も含めて、受ける価値があるか考える",
+        "text": "近道を探す",
         "scores": {
           "black": 2,
           "blue": 1
@@ -3068,7 +3068,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "気分とタイミングが合えば乗るし、合わなければその場で断る",
+        "text": "勘に任せて進む",
         "scores": {
           "red": 2,
           "green": 2
@@ -3080,7 +3080,7 @@ export const questions = [
   {
     "id": "q058",
     "axis": "axis",
-    "groupId": "group_19",
+    "groupId": "group_black",
     "primaryColor": "black",
     "friendlyColors": [
       "blue",
@@ -3090,12 +3090,12 @@ export const questions = [
       "white",
       "green"
     ],
-    "text": "長期目標に対する姿勢は？",
+    "text": "関係が合わないと感じる人とどう接する？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "途中で手段を調整しながらでも、現実的に達成できる形を詰める",
+        "text": "必要最低限の関わりに絞る",
         "scores": {
           "black": 2,
           "blue": 1
@@ -3104,7 +3104,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "理想像から逆算して、足りないものを順番に埋めていく",
+        "text": "相手の考え方を理解しようとする",
         "scores": {
           "blue": 2,
           "black": 1
@@ -3113,7 +3113,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "欲しい結果のためなら、手段はかなり柔軟に切り替える",
+        "text": "感情に従って距離を変える",
         "scores": {
           "red": 2,
           "black": 1
@@ -3122,7 +3122,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "先を決めすぎず、その時々の熱や勢いで進路を変えていく",
+        "text": "できるだけ関係を維持する",
         "scores": {
           "white": 2,
           "green": 2
@@ -3134,7 +3134,7 @@ export const questions = [
   {
     "id": "q059",
     "axis": "axis",
-    "groupId": "group_19",
+    "groupId": "group_red",
     "primaryColor": "red",
     "friendlyColors": [
       "black",
@@ -3144,12 +3144,12 @@ export const questions = [
       "white",
       "blue"
     ],
-    "text": "集団の中で自然に取る役割は？",
+    "text": "何かを選ぶときの基準として近いものはどれ？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "空気を動かすきっかけを作り、停滞した場を前に進める",
+        "text": "今の気持ちに従う",
         "scores": {
           "red": 2,
           "black": 1
@@ -3158,7 +3158,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "必要なら主導権を握り、結果が出る形に人を動かす",
+        "text": "自分にとって得かどうか",
         "scores": {
           "black": 2,
           "red": 1
@@ -3167,7 +3167,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "全体の流れを見ながら、無理のない配置や助け合いを整える",
+        "text": "自分にとって続けられるか",
         "scores": {
           "green": 2,
           "red": 1
@@ -3176,7 +3176,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "表に立つより、仕組みや連携を整えて場を安定させる",
+        "text": "根拠や情報に基づくか",
         "scores": {
           "white": 2,
           "blue": 2
@@ -3188,7 +3188,7 @@ export const questions = [
   {
     "id": "q060",
     "axis": "axis",
-    "groupId": "group_19",
+    "groupId": "group_green",
     "primaryColor": "green",
     "friendlyColors": [
       "red",
@@ -3198,12 +3198,12 @@ export const questions = [
       "blue",
       "black"
     ],
-    "text": "突発的なチャンスが来たときの判断は？",
+    "text": "飲み物を飲み終えたコップは普段どうする？",
     "options": [
       {
         "id": "a",
         "role": "primary",
-        "text": "今の流れや自分の感覚に合うなら、まず掴んでみる",
+        "text": "次に使うときに合わせて置いておく",
         "scores": {
           "green": 2,
           "red": 1
@@ -3212,7 +3212,7 @@ export const questions = [
       {
         "id": "b",
         "role": "friendly1",
-        "text": "面白いと思えば多少荒くても飛び込んでから考える",
+        "text": "気分でそのまま置いたり片付けたりする",
         "scores": {
           "red": 2,
           "green": 1
@@ -3221,7 +3221,7 @@ export const questions = [
       {
         "id": "c",
         "role": "friendly2",
-        "text": "周囲や土台との相性を見て、無理のない形で乗れるか確かめる",
+        "text": "その都度きちんと洗って片付ける",
         "scores": {
           "white": 2,
           "green": 1
@@ -3230,7 +3230,7 @@ export const questions = [
       {
         "id": "d",
         "role": "enemy",
-        "text": "条件と再現性を見て、罠でないと判断できた時だけ動く",
+        "text": "後でまとめて洗う",
         "scores": {
           "blue": 2,
           "black": 2
